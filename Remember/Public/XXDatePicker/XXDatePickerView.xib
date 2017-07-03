@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XXDatePickerView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSW-gn-m3o" userLabel="BGView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fI3-HH-Ubd">
+                    <rect key="frame" x="0.0" y="667" width="375" height="250"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxQ-Vg-WaY">
+                            <rect key="frame" x="0.0" y="44" width="375" height="162"/>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="KBm-pa-Fov"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="RY4-10-eXz"/>
+                            </connections>
+                        </pickerView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-tF-fUb">
+                            <rect key="frame" x="0.0" y="206" width="375" height="44"/>
+                            <subviews>
+                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGi-qi-bao">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                                    <color key="backgroundColor" red="0.79215686269999996" green="0.79215686269999996" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="c22-KE-MTK"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2T-Nb-UTT">
+                                    <rect key="frame" x="290" y="0.0" width="85" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="85" id="l5l-Yl-va6"/>
+                                    </constraints>
+                                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="农历" image="unchoose">
+                                        <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="selected" image="choose">
+                                        <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="highlighted" image="unchoose"/>
+                                    <connections>
+                                        <action selector="change:" destination="iN0-l3-epB" eventType="touchUpInside" id="zmZ-Fo-4eV"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="M2T-Nb-UTT" secondAttribute="trailing" id="M08-BB-gwb"/>
+                                <constraint firstItem="oGi-qi-bao" firstAttribute="top" secondItem="ebT-tF-fUb" secondAttribute="top" id="bHU-UG-eO0"/>
+                                <constraint firstItem="oGi-qi-bao" firstAttribute="leading" secondItem="ebT-tF-fUb" secondAttribute="leading" id="l9y-3X-o4t"/>
+                                <constraint firstAttribute="height" constant="44" id="qAb-R2-LfU"/>
+                                <constraint firstAttribute="trailing" secondItem="oGi-qi-bao" secondAttribute="trailing" id="rJA-gi-Eqc"/>
+                                <constraint firstItem="M2T-Nb-UTT" firstAttribute="top" secondItem="ebT-tF-fUb" secondAttribute="top" id="tKD-fq-QgQ"/>
+                                <constraint firstAttribute="bottom" secondItem="M2T-Nb-UTT" secondAttribute="bottom" id="zv8-nc-Qqm"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILb-3z-ZOm">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rB1-Jj-XbO">
+                                    <rect key="frame" x="0.0" y="43.5" width="375" height="0.5"/>
+                                    <color key="backgroundColor" red="0.79215686269999996" green="0.79215686269999996" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="i4C-gS-wam"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pM6-Wg-7VD">
+                                    <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="t7L-lM-413"/>
+                                    </constraints>
+                                    <state key="normal" image="close"/>
+                                    <connections>
+                                        <action selector="cancle:" destination="iN0-l3-epB" eventType="touchUpInside" id="G56-70-nmS"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mK-TA-e64">
+                                    <rect key="frame" x="305" y="0.0" width="70" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="a19-4g-AHc"/>
+                                    </constraints>
+                                    <state key="normal" image="complete">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sure:" destination="iN0-l3-epB" eventType="touchUpInside" id="AC0-Tg-eCF"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="GAF-42-rOT"/>
+                                <constraint firstAttribute="bottom" secondItem="rB1-Jj-XbO" secondAttribute="bottom" id="MYE-3y-v8a"/>
+                                <constraint firstAttribute="bottom" secondItem="9mK-TA-e64" secondAttribute="bottom" id="Qs6-7o-oVk"/>
+                                <constraint firstItem="rB1-Jj-XbO" firstAttribute="leading" secondItem="ILb-3z-ZOm" secondAttribute="leading" id="RGm-q5-io4"/>
+                                <constraint firstItem="pM6-Wg-7VD" firstAttribute="top" secondItem="ILb-3z-ZOm" secondAttribute="top" id="TzV-oy-j4f"/>
+                                <constraint firstAttribute="bottom" secondItem="pM6-Wg-7VD" secondAttribute="bottom" id="fGt-GW-o6o"/>
+                                <constraint firstItem="9mK-TA-e64" firstAttribute="top" secondItem="ILb-3z-ZOm" secondAttribute="top" id="q4M-LY-jmP"/>
+                                <constraint firstAttribute="trailing" secondItem="rB1-Jj-XbO" secondAttribute="trailing" id="r9c-nZ-NUT"/>
+                                <constraint firstAttribute="trailing" secondItem="9mK-TA-e64" secondAttribute="trailing" id="sLK-J5-eph"/>
+                                <constraint firstItem="pM6-Wg-7VD" firstAttribute="leading" secondItem="ILb-3z-ZOm" secondAttribute="leading" id="z4Y-3d-6Lk"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ebT-tF-fUb" secondAttribute="bottom" id="2S2-zb-rFO"/>
+                        <constraint firstAttribute="trailing" secondItem="NxQ-Vg-WaY" secondAttribute="trailing" id="36a-AC-uoa"/>
+                        <constraint firstAttribute="height" constant="250" id="3fr-RL-l8y"/>
+                        <constraint firstItem="NxQ-Vg-WaY" firstAttribute="leading" secondItem="fI3-HH-Ubd" secondAttribute="leading" id="4RL-XU-FKd"/>
+                        <constraint firstItem="ILb-3z-ZOm" firstAttribute="leading" secondItem="fI3-HH-Ubd" secondAttribute="leading" id="OyN-zR-jIY"/>
+                        <constraint firstItem="ILb-3z-ZOm" firstAttribute="top" secondItem="fI3-HH-Ubd" secondAttribute="top" id="XSs-XM-WYE"/>
+                        <constraint firstAttribute="trailing" secondItem="ILb-3z-ZOm" secondAttribute="trailing" id="iFp-On-Knk"/>
+                        <constraint firstAttribute="trailing" secondItem="ebT-tF-fUb" secondAttribute="trailing" id="phj-ho-D76"/>
+                        <constraint firstItem="ebT-tF-fUb" firstAttribute="top" secondItem="NxQ-Vg-WaY" secondAttribute="bottom" id="pnr-0g-YUb"/>
+                        <constraint firstItem="NxQ-Vg-WaY" firstAttribute="top" secondItem="ILb-3z-ZOm" secondAttribute="bottom" id="tvt-pT-rLL"/>
+                        <constraint firstItem="ebT-tF-fUb" firstAttribute="leading" secondItem="fI3-HH-Ubd" secondAttribute="leading" id="wwu-Y6-SIa"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HSW-gn-m3o" secondAttribute="trailing" id="4MW-KR-cjc"/>
+                <constraint firstItem="HSW-gn-m3o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5ix-U3-kTi"/>
+                <constraint firstAttribute="bottom" secondItem="fI3-HH-Ubd" secondAttribute="bottom" constant="-250" id="6au-23-jwr"/>
+                <constraint firstItem="fI3-HH-Ubd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="75A-Hu-duX"/>
+                <constraint firstAttribute="bottom" secondItem="HSW-gn-m3o" secondAttribute="bottom" id="EP4-Ez-n5g"/>
+                <constraint firstAttribute="trailing" secondItem="fI3-HH-Ubd" secondAttribute="trailing" id="fbH-Sc-t0f"/>
+                <constraint firstItem="HSW-gn-m3o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wRP-b7-miT"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="HSW-gn-m3o" id="ug1-dv-FM2"/>
+                <outlet property="bottomContraint" destination="6au-23-jwr" id="D9s-J1-fuM"/>
+                <outlet property="changeBtn" destination="M2T-Nb-UTT" id="sKX-bp-Xy0"/>
+                <outlet property="dateView" destination="NxQ-Vg-WaY" id="CjV-XX-LZZ"/>
+            </connections>
+            <point key="canvasLocation" x="-49.5" y="-23.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="choose" width="20" height="20"/>
+        <image name="close" width="25" height="25"/>
+        <image name="complete" width="25" height="25"/>
+        <image name="unchoose" width="20" height="20"/>
+    </resources>
+</document>
