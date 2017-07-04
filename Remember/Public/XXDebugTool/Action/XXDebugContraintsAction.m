@@ -1,20 +1,20 @@
 //
-//  LGDebugContraintsAction.m
+//  xxDebugContraintsAction.m
 //  CoreDataDemo
 //
 //  Created by lx13417 on 2017/5/12.
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugContraintsAction.h"
+#import "XXDebugContraintsAction.h"
 
-NSString *const kDebugConstraintsModuleIdentifier = @"lg.constraints";
+NSString *const kDebugConstraintsModuleIdentifier = @"xx.constraints";
 
-@implementation LGDebugContraintsAction
+@implementation XXDebugContraintsAction
 
-- (void)lg_debugCellDidClickFromViewController:(UIViewController *)fromVC {
+- (void)xx_debugCellDidClickFromViewController:(UIViewController *)fromVC {
     
-    [super lg_debugCellDidClickFromViewController:fromVC];
+    [super xx_debugCellDidClickFromViewController:fromVC];
  
     BOOL start = [[[NSUserDefaults standardUserDefaults] valueForKey:kDebugConstraintsModuleIdentifier] boolValue];
     [[NSUserDefaults standardUserDefaults] setValue:@(!start) forKey:kDebugConstraintsModuleIdentifier];

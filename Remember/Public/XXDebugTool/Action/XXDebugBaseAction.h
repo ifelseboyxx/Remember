@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LGDebugBaseAction : NSObject
+@interface XXDebugBaseAction : NSObject
 
-- (void)lg_debugCellDidClickFromViewController:(UIViewController *)fromVC;
+- (void)xx_debugCellDidClickFromViewController:(UIViewController *)fromVC;
 
 @end

@@ -1,27 +1,28 @@
 //
-//  LGDebugViewController.m
+//  xxDebugViewController.m
 //  CoreDataDemo
 //
 //  Created by lx13417 on 2017/5/12.
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugViewController.h"
-#import "LGDebugBaseModule.h"
-#import "LGDebugBaseAction.h"
+#import "XXDebugViewController.h"
+#import "XXDebugBaseModule.h"
+#import "XXDebugBaseAction.h"
 #import "UIViewController+PresentInWindow.h"
 
-@interface LGDebugViewController ()
+@interface XXDebugViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tvDebug;
 @property (weak, nonatomic) IBOutlet UIView *debugBGView;
+@property (weak, nonatomic) IBOutlet UIView *bgShadowView;
 
-@property (strong, nonatomic) NSArray <LGDebugBaseModule *> *modules;
+@property (strong, nonatomic) NSArray <XXDebugBaseModule *> *modules;
 
 @end
 
-@implementation LGDebugViewController
+@implementation XXDebugViewController
 
 #pragma mark - Init
 
@@ -29,12 +30,12 @@
     static id instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[LGDebugViewController alloc] initWithNibName:@"LGDebugViewController" bundle:nil];
+        instance = [[XXDebugViewController alloc] initWithNibName:NSStringFromClass(XXDebugViewController.class) bundle:nil];
     });
     return instance;
 }
 
-- (NSArray<LGDebugBaseModule *> *)modules {
+- (NSArray<XXDebugBaseModule *> *)modules {
     if (!_modules) {
         NSMutableArray *mulArr = [NSMutableArray array];
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"DebugModules" ofType:@"plist"];
@@ -56,6 +57,14 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgClick)];
     [self.debugBGView addGestureRecognizer:tap];
     
+    self.tvDebug.layer.cornerRadius = 10.0f;
+    self.tvDebug.clipsToBounds = YES;
+    
+    self.bgShadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.bgShadowView.layer.shadowOffset = CGSizeMake(0,0);
+    self.bgShadowView.layer.shadowRadius = 5.f;
+    self.bgShadowView.layer.shadowOpacity = 0.8f;
+    self.bgShadowView.layer.cornerRadius = 10.0f;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,15 +79,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"LGDebugTableViewCell";
+    static NSString *identifier = @"xxDebugTableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     
-    LGDebugBaseModule *module = self.modules[indexPath.row];
-    cell.textLabel.text = module.lg_debugTitle;
-    cell.detailTextLabel.text = module.lg_debugSubTitle;
+    XXDebugBaseModule *module = self.modules[indexPath.row];
+    cell.textLabel.text = module.xx_debugTitle;
+    cell.detailTextLabel.text = module.xx_debugSubTitle;
     
     return cell;
 }
@@ -87,15 +96,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LGDebugBaseModule *module = self.modules[indexPath.row];
-    LGDebugBaseAction *action = [module lg_debugAction];
-    [action lg_debugCellDidClickFromViewController:self];
+    XXDebugBaseModule *module = self.modules[indexPath.row];
+    XXDebugBaseAction *action = [module xx_debugAction];
+    [action xx_debugCellDidClickFromViewController:self];
 }
 
 #pragma mark - Action
 
 - (void)bgClick {
-    [self lg_dismissWithAnimation:YES];
+    [self xx_dismissWithAnimation:YES];
 }
 
 - (void)dealloc {

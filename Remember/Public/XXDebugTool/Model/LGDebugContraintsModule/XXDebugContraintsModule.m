@@ -1,27 +1,27 @@
 //
-//  LGDebugContraintsModule.m
+//  xxDebugContraintsModule.m
 //  CoreDataDemo
 //
 //  Created by lx13417 on 2017/5/12.
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugContraintsModule.h"
-#import "LGDebugContraintsAction.h"
+#import "XXDebugContraintsModule.h"
+#import "XXDebugContraintsAction.h"
 #import <objc/runtime.h>
 
-@implementation LGDebugContraintsModule
+@implementation XXDebugContraintsModule
 
-- (NSString *)lg_debugTitle {
+- (NSString *)xx_debugTitle {
     return @"页面约束警告提示";
 }
 
-- (NSString *)lg_debugSubTitle {
+- (NSString *)xx_debugSubTitle {
     return [[[NSUserDefaults standardUserDefaults] valueForKey:kDebugConstraintsModuleIdentifier] boolValue] ? @"已开启" : @"已关闭";
 }
 
-- (LGDebugBaseAction *)lg_debugAction {
-    return [LGDebugContraintsAction new];
+- (XXDebugBaseAction *)xx_debugAction {
+    return [XXDebugContraintsAction new];
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LGDebugViewController : UIViewController
+@interface XXDebugViewController : UIViewController
 
 + (instancetype)sharedInstance;
 

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugBaseAction.h"
+#import "XXDebugBaseAction.h"
 
-@interface LGDebugFlexAction : LGDebugBaseAction
+@interface XXDebugFlexAction : XXDebugBaseAction
 
 @end

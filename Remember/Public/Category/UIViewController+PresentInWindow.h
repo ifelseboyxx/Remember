@@ -10,8 +10,8 @@
 
 @interface UIViewController (PresentInWindow)
 
-- (void)lg_presentInWindow;
+- (void)xx_presentInWindow;
 
-- (void)lg_dismissWithAnimation:(BOOL)animation;
+- (void)xx_dismissWithAnimation:(BOOL)animation;
 
 @end

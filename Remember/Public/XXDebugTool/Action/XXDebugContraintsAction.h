@@ -6,10 +6,10 @@
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugBaseAction.h"
+#import "XXDebugBaseAction.h"
 
 UIKIT_EXTERN NSString *const kDebugConstraintsModuleIdentifier;
 
-@interface LGDebugContraintsAction : LGDebugBaseAction
+@interface XXDebugContraintsAction : XXDebugBaseAction
 
 @end

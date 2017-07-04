@@ -10,8 +10,8 @@
 
 @implementation UIViewController (PresentInWindow)
 
-- (void)lg_presentInWindow
-{
+- (void)xx_presentInWindow {
+    
     self.view.alpha = 0;
     [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
@@ -32,7 +32,7 @@
     }];
 }
 
-- (void)lg_dismissWithAnimation:(BOOL)animation {
+- (void)xx_dismissWithAnimation:(BOOL)animation {
     if (!animation) {
         [self.view removeFromSuperview];
         return;

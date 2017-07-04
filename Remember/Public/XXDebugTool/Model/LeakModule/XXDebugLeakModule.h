@@ -6,8 +6,10 @@
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugBaseModule.h"
+//https://github.com/music4kid/PLeakSniffer
 
-@interface LGDebugLeakModule : LGDebugBaseModule
+#import "XXDebugBaseModule.h"
+
+@interface XXDebugLeakModule : XXDebugBaseModule
 
 @end

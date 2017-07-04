@@ -6,13 +6,13 @@
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugBaseAction.h"
+#import "XXDebugBaseAction.h"
 #import "UIViewController+PresentInWindow.h"
 
-@implementation LGDebugBaseAction
+@implementation XXDebugBaseAction
 
-- (void)lg_debugCellDidClickFromViewController:(UIViewController *)fromVC {
-    [fromVC lg_dismissWithAnimation:NO];
+- (void)xx_debugCellDidClickFromViewController:(UIViewController *)fromVC {
+    [fromVC xx_dismissWithAnimation:YES];
 };
 
 @end

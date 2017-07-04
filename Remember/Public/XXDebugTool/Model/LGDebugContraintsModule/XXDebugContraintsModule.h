@@ -6,8 +6,8 @@
 //  Copyright © 2017年 lx13417. All rights reserved.
 //
 
-#import "LGDebugBaseModule.h"
+#import "XXDebugBaseModule.h"
 
-@interface LGDebugContraintsModule : LGDebugBaseModule
+@interface XXDebugContraintsModule : XXDebugBaseModule
 
 @end

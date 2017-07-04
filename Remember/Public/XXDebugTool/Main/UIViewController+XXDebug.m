@@ -1,24 +1,24 @@
 //
-//  UIViewController+LGDebug.m
+//  UIViewController+xxDebug.m
 //  Bill
 //
 //  Created by Jason on 2017/5/16.
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
-#import "UIViewController+LGDebug.h"
+#import "UIViewController+XXDebug.h"
 #import <objc/runtime.h>
 #import "UIViewController+PresentInWindow.h"
-#import "LGDebugViewController.h"
+#import "XXDebugViewController.h"
 
 
-@implementation UIViewController (LGDebug)
+@implementation UIViewController (XXDebug)
 
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         SEL s1 = @selector(viewDidLoad);
-        SEL s2 = @selector(lg_debug_viewDidLoad);
+        SEL s2 = @selector(xx_debug_viewDidLoad);
         Class class = [self class];
         Method m1 = class_getInstanceMethod(class, s1);
         Method m2 = class_getInstanceMethod(class, s2);
@@ -32,8 +32,8 @@
     });
 }
 
-- (void)lg_debug_viewDidLoad {
-    [self lg_debug_viewDidLoad];
+- (void)xx_debug_viewDidLoad {
+    [self xx_debug_viewDidLoad];
 #ifdef DEBUG
     UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tctdebug_pushConfigView:)];
     gesture.minimumPressDuration = 0.8f;
@@ -43,7 +43,7 @@
 
 - (void)tctdebug_pushConfigView:(UILongPressGestureRecognizer *)recoginzer {
     if ([recoginzer state] == UIGestureRecognizerStateBegan) {
-        [[LGDebugViewController sharedInstance] lg_presentInWindow];
+        [[XXDebugViewController sharedInstance] xx_presentInWindow];
     }
 }
 
