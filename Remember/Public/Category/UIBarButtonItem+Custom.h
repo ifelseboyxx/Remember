@@ -11,6 +11,12 @@
 @interface UIBarButtonItem (Custom)
 
 + (instancetype)barButtonItemWithImage:(NSString *)imageName
+                         disabledImage:(NSString *)disabledName
+                                target:(id)target
+                                action:(SEL)action
+                                  size:(CGSize)size;
+
++ (instancetype)barButtonItemWithImage:(NSString *)imageName
                                 target:(id)target
                                 action:(SEL)action
                                   size:(CGSize)size;

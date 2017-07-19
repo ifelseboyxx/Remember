@@ -24,6 +24,7 @@
 		9629B56E1ED5DF7800F9ABB4 /* XXDateHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9629B56D1ED5DF7800F9ABB4 /* XXDateHelper.mm */; };
 		9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9636F5901ED7B9B80021683F /* XXDatePickerView.xib */; };
 		9636F5941EE5D09F0021683F /* DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636F5931EE5D09F0021683F /* DateModel.m */; };
+		96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96462FB31F1F729A00A18425 /* NSDate+Helper.m */; };
 		96BB5CE01ECE33FC00B2D788 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CDF1ECE33FC00B2D788 /* main.m */; };
 		96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CE21ECE33FC00B2D788 /* AppDelegate.m */; };
 		96BB5CE91ECE33FC00B2D788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5CE71ECE33FC00B2D788 /* Main.storyboard */; };
@@ -171,6 +172,8 @@
 		9636F5901ED7B9B80021683F /* XXDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XXDatePickerView.xib; sourceTree = "<group>"; };
 		9636F5921EE5D09F0021683F /* DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModel.h; sourceTree = "<group>"; };
 		9636F5931EE5D09F0021683F /* DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModel.m; sourceTree = "<group>"; };
+		96462FB21F1F729A00A18425 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		96462FB31F1F729A00A18425 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		96BB5CDB1ECE33FC00B2D788 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BB5CDF1ECE33FC00B2D788 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BB5CE11ECE33FC00B2D788 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 			children = (
 				9629B5051ED0041600F9ABB4 /* UILabel+Custom.h */,
 				9629B5061ED0041600F9ABB4 /* UILabel+Custom.m */,
+				96462FB21F1F729A00A18425 /* NSDate+Helper.h */,
+				96462FB31F1F729A00A18425 /* NSDate+Helper.m */,
 				9629B5021ED002C900F9ABB4 /* UIBarButtonItem+Custom.h */,
 				9629B5031ED002C900F9ABB4 /* UIBarButtonItem+Custom.m */,
 				9629B4F81ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.h */,
@@ -1112,6 +1117,7 @@
 				96C5F4331F0BA34C0018C136 /* FLEXNetworkObserver.m in Sources */,
 				96C5F4221F0BA34C0018C136 /* FLEXGlobalsTableViewController.m in Sources */,
 				96C5F41E1F0BA34C0018C136 /* FLEXCookiesTableViewController.m in Sources */,
+				96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */,
 				96C5F4121F0BA34C0018C136 /* FLEXExplorerViewController.m in Sources */,
 				96C5F3F81F0BA34C0018C136 /* XXDebugBaseAction.m in Sources */,
 				96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */,
