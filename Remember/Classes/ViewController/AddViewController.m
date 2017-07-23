@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 @property (weak, nonatomic) IBOutlet UILabel *lblDateTime;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (weak, nonatomic) IBOutlet UILabel *lblRemindTime;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cellRemind;
 
 @property (strong, nonatomic) UIBarButtonItem *completeItem;
 
@@ -65,8 +66,8 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     self.nameTextView.textContainerInset = UIEdgeInsetsMake(0.0f, -3.0f, 0.0f, 0.0f);
     self.remarkTextView.textContainerInset = UIEdgeInsetsMake(10.0f, -3.0f, 10.0f, 0.0f);
  
-    
     [self setRemindTimeWithDate:[NSDate date]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

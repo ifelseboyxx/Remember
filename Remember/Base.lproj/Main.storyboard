@@ -219,6 +219,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="cellRemind" destination="QIL-5O-pzC" id="wX1-JL-tp2"/>
                         <outlet property="dateButton" destination="mU8-oe-Cvy" id="7eg-Pw-1mr"/>
                         <outlet property="lblDateTime" destination="MrX-cA-pdx" id="2Bg-ay-Zzm"/>
                         <outlet property="lblRemindTime" destination="MrX-cA-pdx" id="pQv-8d-4bd"/>
