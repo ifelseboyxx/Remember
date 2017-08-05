@@ -18,6 +18,7 @@
 #import "XXDatePickerView.h"
 #import "DateModel.h"
 #import "NSDate+Helper.h"
+#import "PPGetAddressBook.h"
 
 typedef NS_ENUM(NSUInteger,AddVCSectionType){
     AddVCSectionTypeInfo = 0,  //信息
@@ -68,6 +69,9 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
  
     [self setRemindTimeWithDate:[NSDate date]];
     
+    //获取通讯录权限
+    [PPGetAddressBook requestAddressBookAuthorization];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,7 +93,7 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     [self.view endEditing:YES];
     
     __weak typeof(self) weakSelf = self;
-    [XXDatePickerView showDatePickerViewWithType:XXPickerDateTypeChinese selectedDate:weakSelf.tempModel  completeBlock:^(XXDateModel *model) {
+    [XXDatePickerView showDatePickerViewWithType:XXPickerDateTypeGregorian selectedDate:weakSelf.tempModel  completeBlock:^(XXDateModel *model) {
         weakSelf.tempModel = model;
         [sender setTitle:model.dateStr forState:UIControlStateNormal];
         [weakSelf configureCompleteItemState];
@@ -105,9 +109,20 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 }
 
 - (void)userClick {
-    CNContactPickerViewController *contactPickerViewController = [[CNContactPickerViewController alloc] init];
-    contactPickerViewController.delegate = self;
-    [self presentViewController:contactPickerViewController animated:YES completion:nil];
+    
+    //获取没有经过排序的联系人模型
+    [PPGetAddressBook getOriginalAddressBook:^(NSArray<PPPersonModel *> *addressBookArray) {
+        //addressBookArray:原始顺序的联系人模型数组
+        for (PPPersonModel *model in addressBookArray) {
+            if ([model.name isEqualToString:@"曹新宇"]) {
+                NSLog(@"%@  %@",NSStringFromCGSize(model.thumbnailImage.size),NSStringFromCGSize(model.image.size));
+            }
+        }
+        
+    } authorizationFailure:^{
+        NSLog(@"请在iPhone的“设置-隐私-通讯录”选项中，允许PPAddressBook访问您的通讯录");
+    }];
+    
 }
 
 - (void)completeClick {

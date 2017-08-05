@@ -25,6 +25,10 @@
 		9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9636F5901ED7B9B80021683F /* XXDatePickerView.xib */; };
 		9636F5941EE5D09F0021683F /* DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636F5931EE5D09F0021683F /* DateModel.m */; };
 		96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96462FB31F1F729A00A18425 /* NSDate+Helper.m */; };
+		967E25B51F35C211003096B2 /* PPAddressBookHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25AF1F35C211003096B2 /* PPAddressBookHandle.m */; };
+		967E25B61F35C211003096B2 /* PPGetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B11F35C211003096B2 /* PPGetAddressBook.m */; };
+		967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B31F35C211003096B2 /* PPPersonModel.m */; };
+		967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B91F35C427003096B2 /* ContactViewController.m */; };
 		96BB5CE01ECE33FC00B2D788 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CDF1ECE33FC00B2D788 /* main.m */; };
 		96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CE21ECE33FC00B2D788 /* AppDelegate.m */; };
 		96BB5CE91ECE33FC00B2D788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5CE71ECE33FC00B2D788 /* Main.storyboard */; };
@@ -174,6 +178,15 @@
 		9636F5931EE5D09F0021683F /* DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModel.m; sourceTree = "<group>"; };
 		96462FB21F1F729A00A18425 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		96462FB31F1F729A00A18425 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		967E25AE1F35C211003096B2 /* PPAddressBookHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAddressBookHandle.h; sourceTree = "<group>"; };
+		967E25AF1F35C211003096B2 /* PPAddressBookHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPAddressBookHandle.m; sourceTree = "<group>"; };
+		967E25B01F35C211003096B2 /* PPGetAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGetAddressBook.h; sourceTree = "<group>"; };
+		967E25B11F35C211003096B2 /* PPGetAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPGetAddressBook.m; sourceTree = "<group>"; };
+		967E25B21F35C211003096B2 /* PPPersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPersonModel.h; sourceTree = "<group>"; };
+		967E25B31F35C211003096B2 /* PPPersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPersonModel.m; sourceTree = "<group>"; };
+		967E25B41F35C211003096B2 /* PPSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSingleton.h; sourceTree = "<group>"; };
+		967E25B81F35C427003096B2 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		967E25B91F35C427003096B2 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		96BB5CDB1ECE33FC00B2D788 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BB5CDF1ECE33FC00B2D788 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BB5CE11ECE33FC00B2D788 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -471,6 +484,20 @@
 			path = solar_chinese_calendar;
 			sourceTree = "<group>";
 		};
+		967E25AD1F35C211003096B2 /* PPGetAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				967E25AE1F35C211003096B2 /* PPAddressBookHandle.h */,
+				967E25AF1F35C211003096B2 /* PPAddressBookHandle.m */,
+				967E25B01F35C211003096B2 /* PPGetAddressBook.h */,
+				967E25B11F35C211003096B2 /* PPGetAddressBook.m */,
+				967E25B21F35C211003096B2 /* PPPersonModel.h */,
+				967E25B31F35C211003096B2 /* PPPersonModel.m */,
+				967E25B41F35C211003096B2 /* PPSingleton.h */,
+			);
+			path = PPGetAddressBook;
+			sourceTree = "<group>";
+		};
 		96BB5CD21ECE33FC00B2D788 = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +579,8 @@
 				96BB5D021ECE47BC00B2D788 /* MainViewController.m */,
 				96BB5E4C1ECE9DF100B2D788 /* AddViewController.h */,
 				96BB5E4D1ECE9DF100B2D788 /* AddViewController.m */,
+				967E25B81F35C427003096B2 /* ContactViewController.h */,
+				967E25B91F35C427003096B2 /* ContactViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -559,6 +588,7 @@
 		96BB5D031ECE47BC00B2D788 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				967E25AD1F35C211003096B2 /* PPGetAddressBook */,
 				96C5F3221F0BA34C0018C136 /* XXDebugTool */,
 				9629B54A1ED1B10900F9ABB4 /* XXDatePicker */,
 				9629B50B1ED0A96400F9ABB4 /* XXTextView */,
@@ -1097,6 +1127,7 @@
 				96C5F44D1F0BA34C0018C136 /* XXDebugFlexModule.m in Sources */,
 				96C5F43A1F0BA34C0018C136 /* FLEXImageExplorerViewController.m in Sources */,
 				96BB5E4F1ECE9DF100B2D788 /* AddViewController.m in Sources */,
+				967E25B61F35C211003096B2 /* PPGetAddressBook.m in Sources */,
 				96C5F4161F0BA34C0018C136 /* FLEXSQLiteDatabaseManager.m in Sources */,
 				96C5F4471F0BA34C0018C136 /* FLEXResources.m in Sources */,
 				96C5F3FA1F0BA34C0018C136 /* XXDebugFlexAction.m in Sources */,
@@ -1137,6 +1168,7 @@
 				96BB5DDA1ECE47BC00B2D788 /* MainViewController.m in Sources */,
 				9629B5691ED5D89E00F9ABB4 /* ChineseCalendarDB.cpp in Sources */,
 				96C5F40F1F0BA34C0018C136 /* FLEXIvarEditorViewController.m in Sources */,
+				967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */,
 				96C5F41B1F0BA34C0018C136 /* FLEXTableListViewController.m in Sources */,
 				96C5F4081F0BA34C0018C136 /* FLEXArgumentInputSwitchView.m in Sources */,
 				9629B55C1ED2D6AB00F9ABB4 /* XXDatePickerView.m in Sources */,
@@ -1146,6 +1178,7 @@
 				96C5F4441F0BA34C0018C136 /* FLEXKeyboardHelpViewController.m in Sources */,
 				96C5F44B1F0BA34C0018C136 /* FLEXHierarchyTableViewController.m in Sources */,
 				96C5F42E1F0BA34C0018C136 /* FLEXNetworkRecorder.m in Sources */,
+				967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */,
 				96C5F4531F0BA34C0018C136 /* UINavigationController+PLeak.m in Sources */,
 				96C5F4631F0BA4320018C136 /* UIViewController+XXDebug.m in Sources */,
 				96C5F4431F0BA34C0018C136 /* FLEXHeapEnumerator.m in Sources */,
@@ -1166,6 +1199,7 @@
 				9629B5561ED2BF6600F9ABB4 /* XXGregorianDateModel.m in Sources */,
 				96C5F4001F0BA34C0018C136 /* FLEXArgumentInputDateView.m in Sources */,
 				96C5F42D1F0BA34C0018C136 /* FLEXNetworkHistoryTableViewController.m in Sources */,
+				967E25B51F35C211003096B2 /* PPAddressBookHandle.m in Sources */,
 				96C5F42F1F0BA34C0018C136 /* FLEXNetworkSettingsTableViewController.m in Sources */,
 				96C5F4131F0BA34C0018C136 /* FLEXWindow.m in Sources */,
 				96C5F42B1F0BA34C0018C136 /* FLEXManager.m in Sources */,

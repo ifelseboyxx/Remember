@@ -91,7 +91,7 @@
     
     CGRect frame = self.placeholderLabel.frame;
     frame.origin.y = self.textContainerInset.top;
-    frame.origin.x = self.textContainerInset.left+4.0f;
+    frame.origin.x = self.textContainerInset.left+6.0f;
     frame.size.width = self.frame.size.width - self.textContainerInset.left*2.0;
     
     CGSize maxSize = CGSizeMake(frame.size.width, MAXFLOAT);
