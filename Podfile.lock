@@ -1,15 +1,18 @@
 PODS:
   - FDFullscreenPopGesture (1.1)
   - Masonry (1.0.2)
+  - ReactiveObjC (3.0.0)
 
 DEPENDENCIES:
   - FDFullscreenPopGesture (= 1.1)
   - Masonry
+  - ReactiveObjC (~> 3.0.0)
 
 SPEC CHECKSUMS:
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
 
-PODFILE CHECKSUM: 118dc642909b11d97938483a04a127edc209e743
+PODFILE CHECKSUM: 3da26ddc6f580b499f47e5af20f38c474565bd30
 
 COCOAPODS: 1.2.1
