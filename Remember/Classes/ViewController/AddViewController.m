@@ -11,14 +11,19 @@
 #define k_NORMAL_HEIGHT 44.0f
 
 #import "AddViewController.h"
+#import "ContactViewController.h"
+
 #import "XXTextView.h"
-#import <ContactsUI/ContactsUI.h>
-#import "UILabel+Custom.h"
-#import "UIBarButtonItem+Custom.h"
-#import "XXDatePickerView.h"
-#import "DateModel.h"
-#import "NSDate+Helper.h"
 #import "PPGetAddressBook.h"
+
+#import "XXDatePickerView.h"
+
+#import "UILabel+Custom.h"
+#import "NSDate+Helper.h"
+#import "UIBarButtonItem+Custom.h"
+#import "UIViewController+PresentInWindow.h"
+
+#import "DateModel.h"
 
 typedef NS_ENUM(NSUInteger,AddVCSectionType){
     AddVCSectionTypeInfo = 0,  //信息
@@ -27,7 +32,7 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 };
 
 @interface AddViewController ()
-<CNContactPickerDelegate,UITableViewDelegate,UITextViewDelegate>
+<UITableViewDelegate,UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet XXTextView *nameTextView;
 @property (weak, nonatomic) IBOutlet XXTextView *remarkTextView;
@@ -42,6 +47,9 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 @property (strong, nonatomic) XXDateModel *tempModel;
 @property (strong, nonatomic) DateModel *dateModel;//存储的数据模型
 
+
+/**  */
+@property (strong, nonatomic)  ContactViewController *contactVC;
 @end
 
 @implementation AddViewController {
@@ -112,12 +120,18 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     
     //获取没有经过排序的联系人模型
     [PPGetAddressBook getOriginalAddressBook:^(NSArray<PPPersonModel *> *addressBookArray) {
-        //addressBookArray:原始顺序的联系人模型数组
-        for (PPPersonModel *model in addressBookArray) {
-            if ([model.name isEqualToString:@"曹新宇"]) {
-                NSLog(@"%@  %@",NSStringFromCGSize(model.thumbnailImage.size),NSStringFromCGSize(model.image.size));
-            }
-        }
+        
+        ContactViewController *contactVC = [[ContactViewController alloc] initWithNibName:NSStringFromClass([ContactViewController class]) bundle:nil];
+        [contactVC xx_presentInWindow];
+        
+        self.contactVC = contactVC;
+        
+//        //addressBookArray:原始顺序的联系人模型数组
+//        for (PPPersonModel *model in addressBookArray) {
+//            if ([model.name isEqualToString:@"曹新宇"]) {
+//                NSLog(@"%@  %@",NSStringFromCGSize(model.thumbnailImage.size),NSStringFromCGSize(model.image.size));
+//            }
+//        }
         
     } authorizationFailure:^{
         NSLog(@"请在iPhone的“设置-隐私-通讯录”选项中，允许PPAddressBook访问您的通讯录");
@@ -182,31 +196,31 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     
 }
 
-#pragma mark - CNContactPickerDelegate
-
-// 点击了联系人的时候调用, 如果实现了这个方法, 就无法进入联系人详情界面
-- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact {
-    
-    //获取生日信息
-    if (contact.birthday) { //公历
-        [self transformContactInfoWithComponents:contact.birthday calIdentifier:NSCalendarIdentifierGregorian];
-    }else if (contact.nonGregorianBirthday) { //农历
-        [self transformContactInfoWithComponents:contact.nonGregorianBirthday calIdentifier:NSCalendarIdentifierChinese];
-    }else{ //都没有
-        
-    }
-    
-    //获取称呼信息
-    if (contact.familyName.length) {
-        self.nameTextView.text = contact.familyName;
-    }
-    
-    //获取备注信息
-    if (contact.note.length) {
-        self.remarkTextView.text = contact.note;
-    }
-    
-}
+//#pragma mark - CNContactPickerDelegate
+//
+//// 点击了联系人的时候调用, 如果实现了这个方法, 就无法进入联系人详情界面
+//- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact {
+//    
+//    //获取生日信息
+//    if (contact.birthday) { //公历
+//        [self transformContactInfoWithComponents:contact.birthday calIdentifier:NSCalendarIdentifierGregorian];
+//    }else if (contact.nonGregorianBirthday) { //农历
+//        [self transformContactInfoWithComponents:contact.nonGregorianBirthday calIdentifier:NSCalendarIdentifierChinese];
+//    }else{ //都没有
+//        
+//    }
+//    
+//    //获取称呼信息
+//    if (contact.familyName.length) {
+//        self.nameTextView.text = contact.familyName;
+//    }
+//    
+//    //获取备注信息
+//    if (contact.note.length) {
+//        self.remarkTextView.text = contact.note;
+//    }
+//    
+//}
 
 
 #pragma mark - UITextViewDelegate

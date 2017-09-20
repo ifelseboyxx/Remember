@@ -8,6 +8,8 @@
 
 #import "ContactViewController.h"
 
+#import "UIViewController+PresentInWindow.h"
+
 @interface ContactViewController ()
 
 @end
@@ -17,6 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - Action
+
+- (IBAction)bgViewDidClick:(UITapGestureRecognizer *)sender {
+    
+    [self xx_dismissWithAnimation:YES];
+}
+
+- (void)dealloc {
+    NSLog(@"%@释放了",self.class);
 }
 
 @end

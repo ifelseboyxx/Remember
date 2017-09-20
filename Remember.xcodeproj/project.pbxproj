@@ -29,6 +29,7 @@
 		967E25B61F35C211003096B2 /* PPGetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B11F35C211003096B2 /* PPGetAddressBook.m */; };
 		967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B31F35C211003096B2 /* PPPersonModel.m */; };
 		967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B91F35C427003096B2 /* ContactViewController.m */; };
+		967E25BC1F35C4FC003096B2 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967E25BB1F35C4FC003096B2 /* ContactViewController.xib */; };
 		96BB5CE01ECE33FC00B2D788 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CDF1ECE33FC00B2D788 /* main.m */; };
 		96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CE21ECE33FC00B2D788 /* AppDelegate.m */; };
 		96BB5CE91ECE33FC00B2D788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5CE71ECE33FC00B2D788 /* Main.storyboard */; };
@@ -187,6 +188,7 @@
 		967E25B41F35C211003096B2 /* PPSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSingleton.h; sourceTree = "<group>"; };
 		967E25B81F35C427003096B2 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		967E25B91F35C427003096B2 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		967E25BB1F35C4FC003096B2 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		96BB5CDB1ECE33FC00B2D788 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BB5CDF1ECE33FC00B2D788 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BB5CE11ECE33FC00B2D788 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				96BB5E4D1ECE9DF100B2D788 /* AddViewController.m */,
 				967E25B81F35C427003096B2 /* ContactViewController.h */,
 				967E25B91F35C427003096B2 /* ContactViewController.m */,
+				967E25BB1F35C4FC003096B2 /* ContactViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 			files = (
 				9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */,
 				96C5F42A1F0BA34C0018C136 /* Info.plist in Resources */,
+				967E25BC1F35C4FC003096B2 /* ContactViewController.xib in Resources */,
 				96C5F41C1F0BA34C0018C136 /* LICENSE in Resources */,
 				96C5F4621F0BA4320018C136 /* XXDebugViewController.xib in Resources */,
 				96C5F4601F0BA4320018C136 /* DebugModules.plist in Resources */,
