@@ -1,8 +1,8 @@
 //
-//  AddViewController.m
+//  RRConfigureViewController.m
 //  Remember
 //
-//  Created by Jason on 2017/5/19.
+//  Created by lx13417 on 2017/9/21.
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #define k_TIMEPICKER_HEIGHT 150.0f
 #define k_NORMAL_HEIGHT 44.0f
 
-#import "AddViewController.h"
+#import "RRConfigureViewController.h"
 #import "ContactViewController.h"
 
 #import "XXTextView.h"
@@ -25,14 +25,17 @@
 
 #import "DateModel.h"
 
+#import <MJRefresh.h>
+#import "RRDragFooter.h"
+
 typedef NS_ENUM(NSUInteger,AddVCSectionType){
     AddVCSectionTypeInfo = 0,  //信息
     AddVCSectionTypeTime,      //时间
     AddVCSectionTypeRemark     //备注
 };
 
-@interface AddViewController ()
-<UITableViewDelegate,UITextViewDelegate>
+@interface RRConfigureViewController ()
+<UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet XXTextView *nameTextView;
 @property (weak, nonatomic) IBOutlet XXTextView *remarkTextView;
@@ -52,7 +55,7 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 @property (strong, nonatomic)  ContactViewController *contactVC;
 @end
 
-@implementation AddViewController {
+@implementation RRConfigureViewController {
     BOOL _showTime; //是否显示 时间选择器
 }
 
@@ -70,21 +73,34 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     
     self.navigationItem.rightBarButtonItems = @[completeItem,userItem];
     
-    self.navigationItem.titleView = [UILabel labelWithTitle:@"新增生日"];
+    self.navigationItem.titleView = [UILabel labelWithTitle:@"新增"];
     
     self.nameTextView.textContainerInset = UIEdgeInsetsMake(0.0f, -3.0f, 0.0f, 0.0f);
     self.remarkTextView.textContainerInset = UIEdgeInsetsMake(10.0f, -3.0f, 10.0f, 0.0f);
- 
+    
     [self setRemindTimeWithDate:[NSDate date]];
     
     //获取通讯录权限
     [PPGetAddressBook requestAddressBookAuthorization];
     
+    [self pullUp];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)dealloc {
@@ -92,8 +108,23 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 }
 
 #pragma mark - Action
+
+- (void)pullUp {
+    RRDragFooter *footer = [RRDragFooter new];
+    @weakify(self);
+    footer.RRWillRefreshingBlock = ^{
+        @strongify(self);
+        if (self.delegateSignal) {
+            [self.delegateSignal sendNext:nil];
+        }
+        [self.tableView.mj_footer endRefreshing];
+    };
+    
+    self.tableView.mj_footer = footer;
+}
+
 - (IBAction)timeSelected:(UIDatePicker *)sender {
-   [self setRemindTimeWithDate:sender.date];
+    [self setRemindTimeWithDate:sender.date];
 }
 
 - (IBAction)dateButtonClick:(UIButton *)sender {
@@ -126,12 +157,12 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
         
         self.contactVC = contactVC;
         
-//        //addressBookArray:原始顺序的联系人模型数组
-//        for (PPPersonModel *model in addressBookArray) {
-//            if ([model.name isEqualToString:@"曹新宇"]) {
-//                NSLog(@"%@  %@",NSStringFromCGSize(model.thumbnailImage.size),NSStringFromCGSize(model.image.size));
-//            }
-//        }
+        //        //addressBookArray:原始顺序的联系人模型数组
+        //        for (PPPersonModel *model in addressBookArray) {
+        //            if ([model.name isEqualToString:@"曹新宇"]) {
+        //                NSLog(@"%@  %@",NSStringFromCGSize(model.thumbnailImage.size),NSStringFromCGSize(model.image.size));
+        //            }
+        //        }
         
     } authorizationFailure:^{
         NSLog(@"请在iPhone的“设置-隐私-通讯录”选项中，允许PPAddressBook访问您的通讯录");
@@ -200,26 +231,26 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 //
 //// 点击了联系人的时候调用, 如果实现了这个方法, 就无法进入联系人详情界面
 //- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact {
-//    
+//
 //    //获取生日信息
 //    if (contact.birthday) { //公历
 //        [self transformContactInfoWithComponents:contact.birthday calIdentifier:NSCalendarIdentifierGregorian];
 //    }else if (contact.nonGregorianBirthday) { //农历
 //        [self transformContactInfoWithComponents:contact.nonGregorianBirthday calIdentifier:NSCalendarIdentifierChinese];
 //    }else{ //都没有
-//        
+//
 //    }
-//    
+//
 //    //获取称呼信息
 //    if (contact.familyName.length) {
 //        self.nameTextView.text = contact.familyName;
 //    }
-//    
+//
 //    //获取备注信息
 //    if (contact.note.length) {
 //        self.remarkTextView.text = contact.note;
 //    }
-//    
+//
 //}
 
 

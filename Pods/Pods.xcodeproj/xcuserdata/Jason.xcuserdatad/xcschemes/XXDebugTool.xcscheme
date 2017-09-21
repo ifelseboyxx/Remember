@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B3C4BB10A6A476FD05460912A065EFDE'
+               BlueprintIdentifier = '3F231A94D9058EBEA587645BE955166B'
                BlueprintName = 'XXDebugTool'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libXXDebugTool.a'>

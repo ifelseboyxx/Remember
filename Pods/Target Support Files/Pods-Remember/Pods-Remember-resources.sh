@@ -80,10 +80,12 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "XXDebugTool/XXDebugTool/Main/DebugModules.plist"
   install_resource "XXDebugTool/XXDebugTool/Main/XXDebugViewController.xib"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "XXDebugTool/XXDebugTool/Main/DebugModules.plist"
   install_resource "XXDebugTool/XXDebugTool/Main/XXDebugViewController.xib"
 fi

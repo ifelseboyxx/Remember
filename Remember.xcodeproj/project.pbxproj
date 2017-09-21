@@ -22,6 +22,12 @@
 		9629B56A1ED5D89E00F9ABB4 /* ChineseDate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9629B5651ED5D89E00F9ABB4 /* ChineseDate.cpp */; };
 		9629B56B1ED5D89E00F9ABB4 /* SolarDate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9629B5671ED5D89E00F9ABB4 /* SolarDate.cpp */; };
 		9629B56E1ED5DF7800F9ABB4 /* XXDateHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9629B56D1ED5DF7800F9ABB4 /* XXDateHelper.mm */; };
+		96341BDE1F73CCB9000D8D71 /* RRConfigureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BD91F73CCB9000D8D71 /* RRConfigureViewController.m */; };
+		96341BDF1F73CCB9000D8D71 /* RRContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BDB1F73CCB9000D8D71 /* RRContainerViewController.m */; };
+		96341BE01F73CCB9000D8D71 /* RRListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BDD1F73CCB9000D8D71 /* RRListViewController.m */; };
+		96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BE31F73CCD7000D8D71 /* RRDragFooter.m */; };
+		96341BEA1F73CCD7000D8D71 /* RRDragHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BE51F73CCD7000D8D71 /* RRDragHeader.m */; };
+		96341BEB1F73CCD7000D8D71 /* XXPageControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BE81F73CCD7000D8D71 /* XXPageControllers.m */; };
 		9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9636F5901ED7B9B80021683F /* XXDatePickerView.xib */; };
 		9636F5941EE5D09F0021683F /* DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636F5931EE5D09F0021683F /* DateModel.m */; };
 		96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96462FB31F1F729A00A18425 /* NSDate+Helper.m */; };
@@ -34,12 +40,10 @@
 		96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5CE21ECE33FC00B2D788 /* AppDelegate.m */; };
 		96BB5CE91ECE33FC00B2D788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5CE71ECE33FC00B2D788 /* Main.storyboard */; };
 		96BB5CEE1ECE33FC00B2D788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5CEC1ECE33FC00B2D788 /* LaunchScreen.storyboard */; };
-		96BB5DDA1ECE47BC00B2D788 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5D021ECE47BC00B2D788 /* MainViewController.m */; };
 		96BB5E421ECE488B00B2D788 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BB5E411ECE488B00B2D788 /* libsqlite3.tbd */; };
 		96BB5E441ECE489600B2D788 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BB5E431ECE489600B2D788 /* libz.tbd */; };
 		96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5E481ECE82B600B2D788 /* MainListCell.m */; };
 		96BB5E4B1ECE82B600B2D788 /* MainListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5E491ECE82B600B2D788 /* MainListCell.xib */; };
-		96BB5E4F1ECE9DF100B2D788 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5E4D1ECE9DF100B2D788 /* AddViewController.m */; };
 		D267EEA362A30793676B3F74 /* libPods-Remember.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F3A3053A719C3428E91774 /* libPods-Remember.a */; };
 		DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5FC01E1ED6D73D00B4C87B /* XXDate.m */; };
 /* End PBXBuildFile section */
@@ -77,6 +81,18 @@
 		9629B5681ED5D89E00F9ABB4 /* SolarDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolarDate.h; sourceTree = "<group>"; };
 		9629B56C1ED5DF7800F9ABB4 /* XXDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDateHelper.h; sourceTree = "<group>"; };
 		9629B56D1ED5DF7800F9ABB4 /* XXDateHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XXDateHelper.mm; sourceTree = "<group>"; };
+		96341BD81F73CCB9000D8D71 /* RRConfigureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRConfigureViewController.h; sourceTree = "<group>"; };
+		96341BD91F73CCB9000D8D71 /* RRConfigureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRConfigureViewController.m; sourceTree = "<group>"; };
+		96341BDA1F73CCB9000D8D71 /* RRContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRContainerViewController.h; sourceTree = "<group>"; };
+		96341BDB1F73CCB9000D8D71 /* RRContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRContainerViewController.m; sourceTree = "<group>"; };
+		96341BDC1F73CCB9000D8D71 /* RRListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRListViewController.h; sourceTree = "<group>"; };
+		96341BDD1F73CCB9000D8D71 /* RRListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRListViewController.m; sourceTree = "<group>"; };
+		96341BE21F73CCD7000D8D71 /* RRDragFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRDragFooter.h; sourceTree = "<group>"; };
+		96341BE31F73CCD7000D8D71 /* RRDragFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDragFooter.m; sourceTree = "<group>"; };
+		96341BE41F73CCD7000D8D71 /* RRDragHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRDragHeader.h; sourceTree = "<group>"; };
+		96341BE51F73CCD7000D8D71 /* RRDragHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDragHeader.m; sourceTree = "<group>"; };
+		96341BE71F73CCD7000D8D71 /* XXPageControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXPageControllers.h; sourceTree = "<group>"; };
+		96341BE81F73CCD7000D8D71 /* XXPageControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageControllers.m; sourceTree = "<group>"; };
 		9636F5901ED7B9B80021683F /* XXDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XXDatePickerView.xib; sourceTree = "<group>"; };
 		9636F5921EE5D09F0021683F /* DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModel.h; sourceTree = "<group>"; };
 		9636F5931EE5D09F0021683F /* DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModel.m; sourceTree = "<group>"; };
@@ -99,15 +115,11 @@
 		96BB5CE81ECE33FC00B2D788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96BB5CED1ECE33FC00B2D788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96BB5CEF1ECE33FC00B2D788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96BB5D011ECE47BC00B2D788 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		96BB5D021ECE47BC00B2D788 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		96BB5E411ECE488B00B2D788 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		96BB5E431ECE489600B2D788 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		96BB5E471ECE82B600B2D788 /* MainListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainListCell.h; sourceTree = "<group>"; };
 		96BB5E481ECE82B600B2D788 /* MainListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListCell.m; sourceTree = "<group>"; };
 		96BB5E491ECE82B600B2D788 /* MainListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
-		96BB5E4C1ECE9DF100B2D788 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
-		96BB5E4D1ECE9DF100B2D788 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		96F3A3053A719C3428E91774 /* libPods-Remember.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remember.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5FC01D1ED6D73C00B4C87B /* XXDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDate.h; sourceTree = "<group>"; };
 		DB5FC01E1ED6D73D00B4C87B /* XXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDate.m; sourceTree = "<group>"; };
@@ -194,6 +206,26 @@
 				9629B5681ED5D89E00F9ABB4 /* SolarDate.h */,
 			);
 			path = solar_chinese_calendar;
+			sourceTree = "<group>";
+		};
+		96341BE11F73CCD7000D8D71 /* RRDrag */ = {
+			isa = PBXGroup;
+			children = (
+				96341BE21F73CCD7000D8D71 /* RRDragFooter.h */,
+				96341BE31F73CCD7000D8D71 /* RRDragFooter.m */,
+				96341BE41F73CCD7000D8D71 /* RRDragHeader.h */,
+				96341BE51F73CCD7000D8D71 /* RRDragHeader.m */,
+			);
+			path = RRDrag;
+			sourceTree = "<group>";
+		};
+		96341BE61F73CCD7000D8D71 /* XXPageControllers */ = {
+			isa = PBXGroup;
+			children = (
+				96341BE71F73CCD7000D8D71 /* XXPageControllers.h */,
+				96341BE81F73CCD7000D8D71 /* XXPageControllers.m */,
+			);
+			path = XXPageControllers;
 			sourceTree = "<group>";
 		};
 		967E25AD1F35C211003096B2 /* PPGetAddressBook */ = {
@@ -287,10 +319,12 @@
 			children = (
 				9629B5081ED087A800F9ABB4 /* BaseNavigationController.h */,
 				9629B5091ED087A800F9ABB4 /* BaseNavigationController.m */,
-				96BB5D011ECE47BC00B2D788 /* MainViewController.h */,
-				96BB5D021ECE47BC00B2D788 /* MainViewController.m */,
-				96BB5E4C1ECE9DF100B2D788 /* AddViewController.h */,
-				96BB5E4D1ECE9DF100B2D788 /* AddViewController.m */,
+				96341BD81F73CCB9000D8D71 /* RRConfigureViewController.h */,
+				96341BD91F73CCB9000D8D71 /* RRConfigureViewController.m */,
+				96341BDA1F73CCB9000D8D71 /* RRContainerViewController.h */,
+				96341BDB1F73CCB9000D8D71 /* RRContainerViewController.m */,
+				96341BDC1F73CCB9000D8D71 /* RRListViewController.h */,
+				96341BDD1F73CCB9000D8D71 /* RRListViewController.m */,
 				967E25B81F35C427003096B2 /* ContactViewController.h */,
 				967E25B91F35C427003096B2 /* ContactViewController.m */,
 				967E25BB1F35C4FC003096B2 /* ContactViewController.xib */,
@@ -301,6 +335,8 @@
 		96BB5D031ECE47BC00B2D788 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				96341BE11F73CCD7000D8D71 /* RRDrag */,
+				96341BE61F73CCD7000D8D71 /* XXPageControllers */,
 				967E25AD1F35C211003096B2 /* PPGetAddressBook */,
 				9629B54A1ED1B10900F9ABB4 /* XXDatePicker */,
 				9629B50B1ED0A96400F9ABB4 /* XXTextView */,
@@ -449,28 +485,32 @@
 				9629B56B1ED5D89E00F9ABB4 /* SolarDate.cpp in Sources */,
 				9629B5611ED4174C00F9ABB4 /* NSArray+Helper.m in Sources */,
 				9629B50A1ED087A800F9ABB4 /* BaseNavigationController.m in Sources */,
-				96BB5E4F1ECE9DF100B2D788 /* AddViewController.m in Sources */,
+				96341BEA1F73CCD7000D8D71 /* RRDragHeader.m in Sources */,
 				967E25B61F35C211003096B2 /* PPGetAddressBook.m in Sources */,
 				9629B56A1ED5D89E00F9ABB4 /* ChineseDate.cpp in Sources */,
 				96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */,
 				96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */,
 				96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */,
 				9629B5071ED0041600F9ABB4 /* UILabel+Custom.m in Sources */,
+				96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */,
+				96341BEB1F73CCD7000D8D71 /* XXPageControllers.m in Sources */,
 				9629B5041ED002C900F9ABB4 /* UIBarButtonItem+Custom.m in Sources */,
 				DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */,
-				96BB5DDA1ECE47BC00B2D788 /* MainViewController.m in Sources */,
 				9629B5691ED5D89E00F9ABB4 /* ChineseCalendarDB.cpp in Sources */,
 				967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */,
 				9629B55C1ED2D6AB00F9ABB4 /* XXDatePickerView.m in Sources */,
 				9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */,
 				967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */,
 				9629B50E1ED0A98F00F9ABB4 /* XXTextView.m in Sources */,
+				96341BE01F73CCB9000D8D71 /* RRListViewController.m in Sources */,
 				96BB5CE01ECE33FC00B2D788 /* main.m in Sources */,
 				9629B5561ED2BF6600F9ABB4 /* XXGregorianDateModel.m in Sources */,
 				967E25B51F35C211003096B2 /* PPAddressBookHandle.m in Sources */,
 				9629B5591ED2BF8300F9ABB4 /* XXChineseDateModel.m in Sources */,
 				9636F5941EE5D09F0021683F /* DateModel.m in Sources */,
 				9629B5501ED1CCD200F9ABB4 /* XXDateModel.m in Sources */,
+				96341BDF1F73CCB9000D8D71 /* RRContainerViewController.m in Sources */,
+				96341BDE1F73CCB9000D8D71 /* RRConfigureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
