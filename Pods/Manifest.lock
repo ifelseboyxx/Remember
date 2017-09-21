@@ -1,18 +1,27 @@
 PODS:
+  - FBRetainCycleDetector (0.1.3)
   - FDFullscreenPopGesture (1.1)
-  - Masonry (1.0.2)
+  - FLEX (2.4.0)
+  - Masonry (1.1.0)
   - ReactiveObjC (3.0.0)
+  - XXDebugTool (3.0):
+    - FBRetainCycleDetector
+    - FLEX
 
 DEPENDENCIES:
   - FDFullscreenPopGesture (= 1.1)
   - Masonry
   - ReactiveObjC (~> 3.0.0)
+  - XXDebugTool
 
 SPEC CHECKSUMS:
+  FBRetainCycleDetector: f0c7b290bf48ae77f6ae060843ce34ae341781eb
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
-  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
+  XXDebugTool: efbb02b0db169542eba0de46f36f402bbf456530
 
-PODFILE CHECKSUM: 3da26ddc6f580b499f47e5af20f38c474565bd30
+PODFILE CHECKSUM: 26c2dc3bc22d6009eb0bc72b2bb336714aa99000
 
 COCOAPODS: 1.2.1

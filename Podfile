@@ -5,5 +5,5 @@ target 'Remember' do
   pod 'Masonry'
   pod 'FDFullscreenPopGesture', '1.1'
   pod 'ReactiveObjC', '~> 3.0.0'
-  
+  pod 'XXDebugTool'
 end
