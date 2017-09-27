@@ -28,6 +28,8 @@
 		96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BE31F73CCD7000D8D71 /* RRDragFooter.m */; };
 		96341BEA1F73CCD7000D8D71 /* RRDragHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BE51F73CCD7000D8D71 /* RRDragHeader.m */; };
 		96341BEB1F73CCD7000D8D71 /* XXPageControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BE81F73CCD7000D8D71 /* XXPageControllers.m */; };
+		96341BEE1F7BECD0000D8D71 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BED1F7BECD0000D8D71 /* TextViewController.m */; };
+		96341BF31F7BECDF000D8D71 /* ZFModalTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 96341BF21F7BECDF000D8D71 /* ZFModalTransitionAnimator.m */; };
 		9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9636F5901ED7B9B80021683F /* XXDatePickerView.xib */; };
 		9636F5941EE5D09F0021683F /* DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636F5931EE5D09F0021683F /* DateModel.m */; };
 		96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96462FB31F1F729A00A18425 /* NSDate+Helper.m */; };
@@ -93,6 +95,11 @@
 		96341BE51F73CCD7000D8D71 /* RRDragHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDragHeader.m; sourceTree = "<group>"; };
 		96341BE71F73CCD7000D8D71 /* XXPageControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXPageControllers.h; sourceTree = "<group>"; };
 		96341BE81F73CCD7000D8D71 /* XXPageControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageControllers.m; sourceTree = "<group>"; };
+		96341BEC1F7BECD0000D8D71 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		96341BED1F7BECD0000D8D71 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		96341BF01F7BECDF000D8D71 /* ZFDragableModalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFDragableModalTransition.h; sourceTree = "<group>"; };
+		96341BF11F7BECDF000D8D71 /* ZFModalTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFModalTransitionAnimator.h; sourceTree = "<group>"; };
+		96341BF21F7BECDF000D8D71 /* ZFModalTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFModalTransitionAnimator.m; sourceTree = "<group>"; };
 		9636F5901ED7B9B80021683F /* XXDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XXDatePickerView.xib; sourceTree = "<group>"; };
 		9636F5921EE5D09F0021683F /* DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModel.h; sourceTree = "<group>"; };
 		9636F5931EE5D09F0021683F /* DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModel.m; sourceTree = "<group>"; };
@@ -228,6 +235,16 @@
 			path = XXPageControllers;
 			sourceTree = "<group>";
 		};
+		96341BEF1F7BECDF000D8D71 /* ZFDragableModalTransition */ = {
+			isa = PBXGroup;
+			children = (
+				96341BF01F7BECDF000D8D71 /* ZFDragableModalTransition.h */,
+				96341BF11F7BECDF000D8D71 /* ZFModalTransitionAnimator.h */,
+				96341BF21F7BECDF000D8D71 /* ZFModalTransitionAnimator.m */,
+			);
+			path = ZFDragableModalTransition;
+			sourceTree = "<group>";
+		};
 		967E25AD1F35C211003096B2 /* PPGetAddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +334,8 @@
 		96BB5D001ECE47BC00B2D788 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				96341BEC1F7BECD0000D8D71 /* TextViewController.h */,
+				96341BED1F7BECD0000D8D71 /* TextViewController.m */,
 				9629B5081ED087A800F9ABB4 /* BaseNavigationController.h */,
 				9629B5091ED087A800F9ABB4 /* BaseNavigationController.m */,
 				96341BD81F73CCB9000D8D71 /* RRConfigureViewController.h */,
@@ -335,6 +354,7 @@
 		96BB5D031ECE47BC00B2D788 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				96341BEF1F7BECDF000D8D71 /* ZFDragableModalTransition */,
 				96341BE11F73CCD7000D8D71 /* RRDrag */,
 				96341BE61F73CCD7000D8D71 /* XXPageControllers */,
 				967E25AD1F35C211003096B2 /* PPGetAddressBook */,
@@ -490,6 +510,7 @@
 				9629B56A1ED5D89E00F9ABB4 /* ChineseDate.cpp in Sources */,
 				96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */,
 				96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */,
+				96341BF31F7BECDF000D8D71 /* ZFModalTransitionAnimator.m in Sources */,
 				96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */,
 				9629B5071ED0041600F9ABB4 /* UILabel+Custom.m in Sources */,
 				96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */,
@@ -498,6 +519,7 @@
 				DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */,
 				9629B5691ED5D89E00F9ABB4 /* ChineseCalendarDB.cpp in Sources */,
 				967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */,
+				96341BEE1F7BECD0000D8D71 /* TextViewController.m in Sources */,
 				9629B55C1ED2D6AB00F9ABB4 /* XXDatePickerView.m in Sources */,
 				9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */,
 				967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */,
