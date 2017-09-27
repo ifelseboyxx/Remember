@@ -13,8 +13,10 @@
 #import "UILabel+Custom.h"
 #import "RACEXTScope.h"
 #import "RRDragHeader.h"
+#import <ChameleonFramework/Chameleon.h>
 
 @interface RRListViewController ()
+<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -29,7 +31,7 @@
     
     [self pullDown];
     
-    [self.tableView registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
+    [self.tvList registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
     
 }
 
@@ -69,17 +71,18 @@
 
 - (void)pullDown {
     
-   
     RRDragHeader *header = [RRDragHeader new];
     @weakify(self);
     header.RRWillRefreshingBlock = ^{
         @strongify(self);
-        if (self.delegateSignal) {
-            [self.delegateSignal sendNext:nil];
-        }
-        [self.tableView.mj_header endRefreshing];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+//        if (self.delegateSignal) {
+//            [self.delegateSignal sendNext:nil];
+//        }
+//        [self.tvList.mj_header endRefreshing];
     };
-    self.tableView.mj_header = header;
+    self.tvList.mj_header = header;
 }
 
 #pragma mark - Target Methods
@@ -108,6 +111,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MainListCell *cell = [tableView dequeueReusableCellWithIdentifier:MainListCellIdentifier forIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor flatBlueColor];
     cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
     return cell;
 }
@@ -115,5 +119,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60.0f;
 }
+
 
 @end

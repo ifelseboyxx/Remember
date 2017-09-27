@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ReactiveObjC.h>
+#import "ReactiveObjC.h"
 
 @interface RRConfigureViewController : UITableViewController
 

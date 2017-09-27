@@ -8,12 +8,34 @@
 
 #import "RRDragHeader.h"
 
+
+@interface _ArrowView : UIView
+
+@end
+
+
+@implementation _ArrowView
+
+- (void)drawRect:(CGRect)rect {
+    
+    UIColor *color = [UIColor brownColor];
+    [color set];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 5.0f;
+    path.lineJoinStyle =  kCGLineJoinRound;
+    
+    
+}
+
+@end
+
+
+
 @interface RRDragHeader ()
 
-@property (weak, nonatomic) UILabel *label;
-@property (weak, nonatomic) UISwitch *s;
-@property (weak, nonatomic) UIImageView *logo;
-@property (weak, nonatomic) UIActivityIndicatorView *loading;
+@property (weak, nonatomic) _ArrowView *arrow;
+
 
 @end
 
@@ -24,45 +46,26 @@
 {
     [super prepare];
     
+    self.backgroundColor = [UIColor whiteColor];
+    
     // 设置控件的高度
     self.mj_h = 50;
     
-    // 添加label
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = [UIColor colorWithRed:1.0 green:0.5 blue:0.0 alpha:1.0];
-    label.font = [UIFont boldSystemFontOfSize:16];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:label];
-    self.label = label;
+    _ArrowView *arrow = [[_ArrowView alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
+    arrow.backgroundColor = [UIColor redColor];
+    [self addSubview:arrow];
+    self.arrow = arrow;
     
-    // 打酱油的开关
-    UISwitch *s = [[UISwitch alloc] init];
-    [self addSubview:s];
-    self.s = s;
-    
-    // logo
-    UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
-    logo.contentMode = UIViewContentModeScaleAspectFit;
-    [self addSubview:logo];
-    self.logo = logo;
-    
-    // loading
-    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self addSubview:loading];
-    self.loading = loading;
 }
 
 #pragma mark 在这里设置子控件的位置和尺寸
 - (void)placeSubviews
 {
     [super placeSubviews];
+
+    self.arrow.center = self.center;
+    self.arrow.mj_y = 20.f;
     
-    self.label.frame = self.bounds;
-    
-    self.logo.bounds = CGRectMake(0, 0, self.bounds.size.width, 100);
-    self.logo.center = CGPointMake(self.mj_w * 0.5, - self.logo.mj_h + 20);
-    
-    self.loading.center = CGPointMake(self.mj_w - 30, self.mj_h * 0.5);
 }
 
 #pragma mark 监听scrollView的contentOffset改变
@@ -70,9 +73,15 @@
 {
     [super scrollViewContentOffsetDidChange:change];
     
+    CGPoint old = [change[@"old"] CGPointValue];
+    CGPoint point = [self.arrow convertPoint:old toView:self.scrollView];
     
-    NSLog(@"%@",change[@"new"]);
-    
+    if (self.state == MJRefreshStateRefreshing) {
+        [UIView animateWithDuration:0.8 animations:^{
+            self.arrow.alpha = .0f;
+            self.arrow.mj_y = ABS(point.y) - 20.f;
+        }];
+    }
 }
 
 #pragma mark 监听scrollView的contentSize改变
@@ -95,21 +104,8 @@
     MJRefreshCheckState;
     
     switch (state) {
-        case MJRefreshStateIdle:
-            [self.loading stopAnimating];
-            [self.s setOn:NO animated:YES];
-            self.label.text = @"赶紧下拉吖(开关是打酱油滴)";
-            break;
-        case MJRefreshStatePulling:
-            [self.loading stopAnimating];
-            [self.s setOn:YES animated:YES];
-            self.label.text = @"赶紧放开我吧(开关是打酱油滴)";
-            break;
         case MJRefreshStateRefreshing:
             !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
-            [self.s setOn:YES animated:YES];
-            self.label.text = @"加载数据中(开关是打酱油滴)";
-            [self.loading startAnimating];
             break;
         default:
             break;
@@ -120,13 +116,6 @@
 - (void)setPullingPercent:(CGFloat)pullingPercent
 {
     [super setPullingPercent:pullingPercent];
-    
-    // 1.0 0.5 0.0
-    // 0.5 0.0 0.5
-    CGFloat red = 1.0 - pullingPercent * 0.5;
-    CGFloat green = 0.5 - 0.5 * pullingPercent;
-    CGFloat blue = 0.5 * pullingPercent;
-    self.label.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
 }
 
 

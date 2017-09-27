@@ -9,7 +9,7 @@
 #import "RRContainerViewController.h"
 #import "RRListViewController.h"
 #import "RRConfigureViewController.h"
-#import <ReactiveObjC.h>
+#import "ReactiveObjC.h"
 #import "RACEXTScope.h"
 
 @interface RRContainerViewController ()
@@ -36,7 +36,6 @@
         @weakify(self)
         [_vcList.delegateSignal subscribeNext:^(id  _Nullable x) {
             @strongify(self);
-            
             [self xx_moveToViewController:self.vcConfigure animated:YES];
         }];
     }

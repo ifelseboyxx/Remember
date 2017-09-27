@@ -10,9 +10,7 @@
 
 @interface RRDragFooter ()
 
-@property (weak, nonatomic) UILabel *label;
-@property (weak, nonatomic) UISwitch *s;
-@property (weak, nonatomic) UIActivityIndicatorView *loading;
+@property (weak, nonatomic) UIView *arrow;
 
 @end
 
@@ -26,23 +24,10 @@
     // 设置控件的高度
     self.mj_h = 50;
     
-    // 添加label
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = [UIColor colorWithRed:1.0 green:0.5 blue:0.0 alpha:1.0];
-    label.font = [UIFont boldSystemFontOfSize:16];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:label];
-    self.label = label;
-    
-    // 打酱油的开关
-    UISwitch *s = [[UISwitch alloc] init];
-    [self addSubview:s];
-    self.s = s;
-    
-    // loading
-    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self addSubview:loading];
-    self.loading = loading;
+    UIView *arrow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
+    arrow.backgroundColor = [UIColor redColor];
+    [self addSubview:arrow];
+    self.arrow = arrow;
 }
 
 #pragma mark 在这里设置子控件的位置和尺寸
@@ -50,10 +35,8 @@
 {
     [super placeSubviews];
     
-    self.label.frame = self.bounds;
-    self.s.center = CGPointMake(self.mj_w - 20, self.mj_h - 20);
-    
-    self.loading.center = CGPointMake(30, self.mj_h * 0.5);
+    self.arrow.center = self.center;
+    self.arrow.mj_y = 10;
 }
 
 #pragma mark 监听scrollView的contentOffset改变
@@ -84,20 +67,12 @@
     
     switch (state) {
         case MJRefreshStateIdle:
-            self.label.text = @"赶紧上拉吖(开关是打酱油滴)";
-            [self.loading stopAnimating];
-            [self.s setOn:NO animated:YES];
+            
             break;
         case MJRefreshStateRefreshing:
             !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
-            [self.s setOn:YES animated:YES];
-            self.label.text = @"加载数据中(开关是打酱油滴)";
-            [self.loading startAnimating];
             break;
         case MJRefreshStateNoMoreData:
-            self.label.text = @"木有数据了(开关是打酱油滴)";
-            [self.s setOn:NO animated:YES];
-            [self.loading stopAnimating];
             break;
         default:
             break;
