@@ -33,6 +33,8 @@
 		9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9636F5901ED7B9B80021683F /* XXDatePickerView.xib */; };
 		9636F5941EE5D09F0021683F /* DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636F5931EE5D09F0021683F /* DateModel.m */; };
 		96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96462FB31F1F729A00A18425 /* NSDate+Helper.m */; };
+		9673041A1F8D0A2A0058AE54 /* KIZBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 967304171F8D0A2A0058AE54 /* KIZBehavior.m */; };
+		9673041B1F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 967304191F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.m */; };
 		967E25B51F35C211003096B2 /* PPAddressBookHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25AF1F35C211003096B2 /* PPAddressBookHandle.m */; };
 		967E25B61F35C211003096B2 /* PPGetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B11F35C211003096B2 /* PPGetAddressBook.m */; };
 		967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E25B31F35C211003096B2 /* PPPersonModel.m */; };
@@ -105,6 +107,10 @@
 		9636F5931EE5D09F0021683F /* DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModel.m; sourceTree = "<group>"; };
 		96462FB21F1F729A00A18425 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		96462FB31F1F729A00A18425 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		967304161F8D0A2A0058AE54 /* KIZBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIZBehavior.h; sourceTree = "<group>"; };
+		967304171F8D0A2A0058AE54 /* KIZBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIZBehavior.m; sourceTree = "<group>"; };
+		967304181F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIZMultipleProxyBehavior.h; sourceTree = "<group>"; };
+		967304191F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIZMultipleProxyBehavior.m; sourceTree = "<group>"; };
 		967E25AE1F35C211003096B2 /* PPAddressBookHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAddressBookHandle.h; sourceTree = "<group>"; };
 		967E25AF1F35C211003096B2 /* PPAddressBookHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPAddressBookHandle.m; sourceTree = "<group>"; };
 		967E25B01F35C211003096B2 /* PPGetAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGetAddressBook.h; sourceTree = "<group>"; };
@@ -245,6 +251,17 @@
 			path = ZFDragableModalTransition;
 			sourceTree = "<group>";
 		};
+		967304151F8D0A2A0058AE54 /* RRMultiDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				967304161F8D0A2A0058AE54 /* KIZBehavior.h */,
+				967304171F8D0A2A0058AE54 /* KIZBehavior.m */,
+				967304181F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.h */,
+				967304191F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.m */,
+			);
+			path = RRMultiDelegate;
+			sourceTree = "<group>";
+		};
 		967E25AD1F35C211003096B2 /* PPGetAddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +371,7 @@
 		96BB5D031ECE47BC00B2D788 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				967304151F8D0A2A0058AE54 /* RRMultiDelegate */,
 				96341BEF1F7BECDF000D8D71 /* ZFDragableModalTransition */,
 				96341BE11F73CCD7000D8D71 /* RRDrag */,
 				96341BE61F73CCD7000D8D71 /* XXPageControllers */,
@@ -502,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9629B56E1ED5DF7800F9ABB4 /* XXDateHelper.mm in Sources */,
+				9673041B1F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.m in Sources */,
 				9629B56B1ED5D89E00F9ABB4 /* SolarDate.cpp in Sources */,
 				9629B5611ED4174C00F9ABB4 /* NSArray+Helper.m in Sources */,
 				9629B50A1ED087A800F9ABB4 /* BaseNavigationController.m in Sources */,
@@ -523,6 +542,7 @@
 				9629B55C1ED2D6AB00F9ABB4 /* XXDatePickerView.m in Sources */,
 				9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */,
 				967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */,
+				9673041A1F8D0A2A0058AE54 /* KIZBehavior.m in Sources */,
 				9629B50E1ED0A98F00F9ABB4 /* XXTextView.m in Sources */,
 				96341BE01F73CCB9000D8D71 /* RRListViewController.m in Sources */,
 				96BB5CE01ECE33FC00B2D788 /* main.m in Sources */,
@@ -659,7 +679,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Remember/Remember.pch";
 				INFOPLIST_FILE = Remember/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ifelseboyxx.Remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -678,7 +698,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Remember/Remember.pch";
 				INFOPLIST_FILE = Remember/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ifelseboyxx.Remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";

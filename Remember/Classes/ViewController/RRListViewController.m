@@ -9,18 +9,20 @@
 #import "RRListViewController.h"
 #import "MainListCell.h"
 #import "XXTextView.h"
-#import "UIBarButtonItem+Custom.h"
-#import "UILabel+Custom.h"
-#import "RACEXTScope.h"
 #import "RRDragHeader.h"
-#import <ChameleonFramework/Chameleon.h>
+#import "MJRefreshStateHeader.h"
+
+
+#import "KIZMultipleProxyBehavior.h"
 
 @interface RRListViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
-@implementation RRListViewController
+@implementation RRListViewController {
+    KIZMultipleProxyBehavior *_multipleDelegate;
+}
 
 #pragma mark - LifeCyle
 
@@ -33,7 +35,23 @@
     
     [self.tvList registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
     
+    //    self.tvList.dataSource = self;
+    //    self.tvList.delegate = self;
+    
+    
 }
+
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+//    float offset = scrollView.contentOffset.y;
+//    if (offset < -160) {
+//        self.tvList.mj_insetT = ABS(scrollView.contentOffset.y);
+//        if (self.delegateSignal) {
+//            [self.delegateSignal sendNext:nil];
+//        }
+//    }else{
+//
+//    }
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -47,8 +65,10 @@
     [super viewWillDisappear:animated];
 }
 
--(void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [self.tvList setContentOffset:CGPointZero];
+    self.tvList.mj_insetT = 0;
 }
 
 - (void)dealloc {
@@ -70,19 +90,26 @@
 }
 
 - (void)pullDown {
-    
     RRDragHeader *header = [RRDragHeader new];
     @weakify(self);
     header.RRWillRefreshingBlock = ^{
         @strongify(self);
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-//        if (self.delegateSignal) {
-//            [self.delegateSignal sendNext:nil];
-//        }
-//        [self.tvList.mj_header endRefreshing];
+        if (self.delegateSignal) {
+            [self.delegateSignal sendNext:nil];
+        }
     };
-    self.tvList.mj_header = header;
+    
+
+    self.tvList.mj_header = (id)header;
+    
+    _multipleDelegate = [KIZMultipleProxyBehavior new];
+    //添加要处理delegate方法的对象
+    NSArray *array = @[self, header];
+    _multipleDelegate.delegateTargets = array;
+    
+    self.tvList.delegate = (id)_multipleDelegate;
+    self.tvList.dataSource = (id)_multipleDelegate;
+    
 }
 
 #pragma mark - Target Methods
@@ -111,7 +138,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MainListCell *cell = [tableView dequeueReusableCellWithIdentifier:MainListCellIdentifier forIndexPath:indexPath];
-//    cell.backgroundColor = [UIColor flatBlueColor];
+    //    cell.backgroundColor = [UIColor flatBlueColor];
     cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
     return cell;
 }

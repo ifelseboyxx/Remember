@@ -84,8 +84,23 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     //获取通讯录权限
     [PPGetAddressBook requestAddressBookAuthorization];
     
-    [self pullUp];
+//    [self pullUp];
     
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    float offset = scrollView.contentOffset.y;
+    
+    NSLog(@"%f",offset);
+    
+    if (offset > 160) {
+        self.tableView.mj_insetT = -scrollView.contentOffset.y;
+        if (self.delegateSignal) {
+            [self.delegateSignal sendNext:nil];
+        }
+    }else{
+        
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -102,6 +117,8 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [self.tableView setContentOffset:CGPointZero];
+    self.tableView.mj_insetT = 0;
 }
 
 - (void)dealloc {

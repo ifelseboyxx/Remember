@@ -6,12 +6,21 @@
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
-//#ifndef Remember_pch
-//#define Remember_pch
-//
-////#import "UIBarButtonItem+Custom.h"
-////#import "UILabel+Custom.h"
-////#import <Masonry.h>
-////#import <MJRefresh.h>
-//
-//#endif /* Remember_pch */
+#ifndef Remember_pch
+#define Remember_pch
+
+#ifdef __OBJC__
+#import "UIViewController+PresentInWindow.h"
+#import <ChameleonFramework/Chameleon.h>
+#import "UIBarButtonItem+Custom.h"
+#import "PPGetAddressBook.h"
+#import "UILabel+Custom.h"
+#import "ReactiveObjC.h"
+#import "RACEXTScope.h"
+#import <MJRefresh.h>
+#import <Masonry.h>
+#import "RRDefine.h"
+
+#endif
+
+#endif

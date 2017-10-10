@@ -8,103 +8,92 @@
 
 #import "RRDragHeader.h"
 
-
-@interface _ArrowView : UIView
-
-@end
-
-
-@implementation _ArrowView
-
-- (void)drawRect:(CGRect)rect {
-    
-    UIColor *color = [UIColor brownColor];
-    [color set];
-    
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    path.lineWidth = 5.0f;
-    path.lineJoinStyle =  kCGLineJoinRound;
-    
-    
-}
-
-@end
-
-
-
 @interface RRDragHeader ()
 
-@property (weak, nonatomic) _ArrowView *arrow;
 
+/** 显示刷新状态的label */
+@property (weak, nonatomic) UILabel *stateLabel;
+/** 所有状态对应的文字 */
+@property (strong, nonatomic) NSMutableDictionary *stateTitles;
 
 @end
 
 @implementation RRDragHeader
 
-#pragma mark 在这里做一些初始化配置（比如添加子控件）
+#pragma mark - 懒加载
+- (NSMutableDictionary *)stateTitles
+{
+    if (!_stateTitles) {
+        self.stateTitles = [NSMutableDictionary dictionary];
+    }
+    return _stateTitles;
+}
+
+- (UILabel *)stateLabel
+{
+    if (!_stateLabel) {
+        [self addSubview:_stateLabel = [UILabel mj_label]];
+    }
+    return _stateLabel;
+}
+
+#pragma mark - 公共方法
+- (void)setTitle:(NSString *)title forState:(MJRefreshState)state
+{
+    if (title == nil) return;
+    self.stateTitles[@(state)] = title;
+    self.stateLabel.text = self.stateTitles[@(self.state)];
+}
+
+#pragma mark - 覆盖父类的方法
 - (void)prepare
 {
     [super prepare];
     
-    self.backgroundColor = [UIColor whiteColor];
+    // 设置高度
+    self.mj_h = MJRefreshHeaderHeight;
     
-    // 设置控件的高度
-    self.mj_h = 50;
+    self.backgroundColor = [UIColor greenColor];
     
-    _ArrowView *arrow = [[_ArrowView alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
-    arrow.backgroundColor = [UIColor redColor];
-    [self addSubview:arrow];
-    self.arrow = arrow;
+    self.stateLabel.font = [UIFont systemFontOfSize:20.f];
+    self.stateLabel.textColor = [UIColor darkGrayColor];
     
 }
 
-#pragma mark 在这里设置子控件的位置和尺寸
 - (void)placeSubviews
 {
     [super placeSubviews];
-
-    self.arrow.center = self.center;
-    self.arrow.mj_y = 20.f;
     
-}
-
-#pragma mark 监听scrollView的contentOffset改变
-- (void)scrollViewContentOffsetDidChange:(NSDictionary *)change
-{
-    [super scrollViewContentOffsetDidChange:change];
+    self.mj_y = - self.mj_h;
     
-    CGPoint old = [change[@"old"] CGPointValue];
-    CGPoint point = [self.arrow convertPoint:old toView:self.scrollView];
+    if (self.stateLabel.hidden) return;
     
-    if (self.state == MJRefreshStateRefreshing) {
-        [UIView animateWithDuration:0.8 animations:^{
-            self.arrow.alpha = .0f;
-            self.arrow.mj_y = ABS(point.y) - 20.f;
-        }];
+    BOOL noConstrainsOnStatusLabel = self.stateLabel.constraints.count == 0;
+    
+    CGFloat stateLabelH = self.mj_h * 0.5;
+    // 状态
+    if (noConstrainsOnStatusLabel) {
+        self.stateLabel.mj_x = 0;
+        self.stateLabel.mj_y = (MJRefreshHeaderHeight - stateLabelH)/2.f;
+        self.stateLabel.mj_w = self.mj_w;
+        self.stateLabel.mj_h = stateLabelH;
     }
-}
-
-#pragma mark 监听scrollView的contentSize改变
-- (void)scrollViewContentSizeDidChange:(NSDictionary *)change
-{
-    [super scrollViewContentSizeDidChange:change];
-    
-}
-
-#pragma mark 监听scrollView的拖拽状态改变
-- (void)scrollViewPanStateDidChange:(NSDictionary *)change
-{
-    [super scrollViewPanStateDidChange:change];
-    
 }
 
 #pragma mark 监听控件的刷新状态
 - (void)setState:(MJRefreshState)state
 {
     MJRefreshCheckState;
-    
+
     switch (state) {
+        case MJRefreshStateIdle:
+            self.stateLabel.text = @"下拉新增";
+            break;
+        case MJRefreshStatePulling:
+            self.stateLabel.text = @"松开新增";
+            break;
         case MJRefreshStateRefreshing:
+            self.stateLabel.text = @"松开新增";
             !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
             break;
         default:
@@ -112,12 +101,31 @@
     }
 }
 
-#pragma mark 监听拖拽比例（控件被拖出来的比例）
-- (void)setPullingPercent:(CGFloat)pullingPercent
+- (void)scrollViewContentOffsetDidChange:(NSDictionary *)change
 {
-    [super setPullingPercent:pullingPercent];
+    [super scrollViewContentOffsetDidChange:change];
+    
+
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    float offset = scrollView.contentOffset.y;
+    
+    if (offset > -160 && offset < - 120) {
+        self.state = MJRefreshStatePulling;
+    }else if (offset < -160) {
 
+    }else{
+        self.state = MJRefreshStateIdle;
+    }
+}
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    float offset = scrollView.contentOffset.y;
+
+    if (offset < -160) {
+        self.scrollView.mj_insetT = ABS(scrollView.contentOffset.y);
+        !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
+    }
+}
 @end
