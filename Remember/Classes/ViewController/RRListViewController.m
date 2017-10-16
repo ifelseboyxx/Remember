@@ -8,20 +8,20 @@
 
 #import "RRListViewController.h"
 #import "MainListCell.h"
-#import "XXTextView.h"
 #import "RRDragHeader.h"
-#import "MJRefreshStateHeader.h"
-
-
 #import "KIZMultipleProxyBehavior.h"
+
+#import "TextViewController.h"
 
 @interface RRListViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *tvList;
+
 @end
 
 @implementation RRListViewController {
-    KIZMultipleProxyBehavior *_multipleDelegate;
+    KIZMultipleProxyBehavior *_multipleDelegate; //multi delegate object
 }
 
 #pragma mark - LifeCyle
@@ -35,23 +35,7 @@
     
     [self.tvList registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
     
-    //    self.tvList.dataSource = self;
-    //    self.tvList.delegate = self;
-    
-    
 }
-
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-//    float offset = scrollView.contentOffset.y;
-//    if (offset < -160) {
-//        self.tvList.mj_insetT = ABS(scrollView.contentOffset.y);
-//        if (self.delegateSignal) {
-//            [self.delegateSignal sendNext:nil];
-//        }
-//    }else{
-//
-//    }
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -79,14 +63,6 @@
 
 - (void)setUpNavItemUI {
     
-    //    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImage:@"setting_normal" target:self action:@selector(settingClick) size:CGSizeMake(24.0f, 24.0f)];
-    
-    //    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithImage:@"add" target:self action:@selector(addClick) size:CGSizeMake(24.0f, 24.0f)];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"YYYY-MM-dd";
-    NSString *currentDay = [formatter stringFromDate:[NSDate date]];
-    self.navigationItem.titleView = [UILabel labelWithTitle:currentDay];
 }
 
 - (void)pullDown {
@@ -94,19 +70,18 @@
     @weakify(self);
     header.RRWillRefreshingBlock = ^{
         @strongify(self);
-        if (self.delegateSignal) {
-            [self.delegateSignal sendNext:nil];
-        }
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];
+        [self presentViewController:vc animated:YES completion:nil];
     };
     
 
     self.tvList.mj_header = (id)header;
     
     _multipleDelegate = [KIZMultipleProxyBehavior new];
-    //添加要处理delegate方法的对象
+    //多个对象监听 delegate
     NSArray *array = @[self, header];
     _multipleDelegate.delegateTargets = array;
-    
     self.tvList.delegate = (id)_multipleDelegate;
     self.tvList.dataSource = (id)_multipleDelegate;
     
@@ -147,5 +122,12 @@
     return 60.0f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

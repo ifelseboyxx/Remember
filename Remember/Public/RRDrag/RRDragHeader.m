@@ -6,28 +6,19 @@
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
+#define kLimit (-125)
+
 #import "RRDragHeader.h"
 
 @interface RRDragHeader ()
-
+<UIScrollViewDelegate>
 
 /** 显示刷新状态的label */
 @property (weak, nonatomic) UILabel *stateLabel;
-/** 所有状态对应的文字 */
-@property (strong, nonatomic) NSMutableDictionary *stateTitles;
 
 @end
 
 @implementation RRDragHeader
-
-#pragma mark - 懒加载
-- (NSMutableDictionary *)stateTitles
-{
-    if (!_stateTitles) {
-        self.stateTitles = [NSMutableDictionary dictionary];
-    }
-    return _stateTitles;
-}
 
 - (UILabel *)stateLabel
 {
@@ -35,14 +26,6 @@
         [self addSubview:_stateLabel = [UILabel mj_label]];
     }
     return _stateLabel;
-}
-
-#pragma mark - 公共方法
-- (void)setTitle:(NSString *)title forState:(MJRefreshState)state
-{
-    if (title == nil) return;
-    self.stateTitles[@(state)] = title;
-    self.stateLabel.text = self.stateTitles[@(self.state)];
 }
 
 #pragma mark - 覆盖父类的方法
@@ -53,10 +36,8 @@
     // 设置高度
     self.mj_h = MJRefreshHeaderHeight;
     
-    self.backgroundColor = [UIColor greenColor];
-    
     self.stateLabel.font = [UIFont systemFontOfSize:20.f];
-    self.stateLabel.textColor = [UIColor darkGrayColor];
+    self.stateLabel.textColor = RRHexColor(RRHeaderTextColor);
     
 }
 
@@ -94,7 +75,6 @@
             break;
         case MJRefreshStateRefreshing:
             self.stateLabel.text = @"松开新增";
-            !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
             break;
         default:
             break;
@@ -105,16 +85,13 @@
 {
     [super scrollViewContentOffsetDidChange:change];
     
-
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     float offset = scrollView.contentOffset.y;
     
-    if (offset > -160 && offset < - 120) {
+    if (offset < kLimit) {
         self.state = MJRefreshStatePulling;
-    }else if (offset < -160) {
-
     }else{
         self.state = MJRefreshStateIdle;
     }
@@ -123,7 +100,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     float offset = scrollView.contentOffset.y;
 
-    if (offset < -160) {
+    if (offset < kLimit) {
         self.scrollView.mj_insetT = ABS(scrollView.contentOffset.y);
         !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
     }

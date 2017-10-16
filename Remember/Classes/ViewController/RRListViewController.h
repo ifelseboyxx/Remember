@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ReactiveObjC.h"
 
 @interface RRListViewController : UIViewController
-
-@property (strong, nonatomic) RACSubject *delegateSignal;
-
-@property (weak, nonatomic) IBOutlet UITableView *tvList;
 
 @end

@@ -9,7 +9,6 @@
 #import <MJRefresh/MJRefresh.h>
 
 @interface RRDragHeader : MJRefreshComponent
-<UIScrollViewDelegate>
 
 @property (copy, nonatomic) void (^RRWillRefreshingBlock)();
 

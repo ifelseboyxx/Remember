@@ -32,12 +32,12 @@
     if (!_vcList) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         _vcList = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(RRListViewController.class)];
-        _vcList.delegateSignal = [RACSubject subject];
-        @weakify(self)
-        [_vcList.delegateSignal subscribeNext:^(id  _Nullable x) {
-            @strongify(self);
-            [self xx_moveToViewController:self.vcConfigure animated:YES];
-        }];
+//        _vcList.delegateSignal = [RACSubject subject];
+//        @weakify(self)
+//        [_vcList.delegateSignal subscribeNext:^(id  _Nullable x) {
+//            @strongify(self);
+//            [self xx_moveToViewController:self.vcConfigure animated:YES];
+//        }];
     }
     return _vcList;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96021C9D1F94AF4B00BBE31C /* RRDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021C9B1F94AF4A00BBE31C /* RRDefine.m */; };
 		9629B4F61ECFF14200F9ABB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */; };
 		9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9629B4F91ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m */; };
 		9629B5041ED002C900F9ABB4 /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9629B5031ED002C900F9ABB4 /* UIBarButtonItem+Custom.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		7C19134DF3D5CF2541B91203 /* Pods-Remember.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.release.xcconfig"; sourceTree = "<group>"; };
 		81CC84E89687EDCEC9225955 /* Pods-Remember.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.debug.xcconfig"; sourceTree = "<group>"; };
+		96021C9B1F94AF4A00BBE31C /* RRDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDefine.m; sourceTree = "<group>"; };
+		96021C9C1F94AF4A00BBE31C /* RRDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRDefine.h; sourceTree = "<group>"; };
 		9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9629B4F81ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentInWindow.h"; sourceTree = "<group>"; };
 		9629B4F91ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentInWindow.m"; sourceTree = "<group>"; };
@@ -224,10 +227,10 @@
 		96341BE11F73CCD7000D8D71 /* RRDrag */ = {
 			isa = PBXGroup;
 			children = (
-				96341BE21F73CCD7000D8D71 /* RRDragFooter.h */,
-				96341BE31F73CCD7000D8D71 /* RRDragFooter.m */,
 				96341BE41F73CCD7000D8D71 /* RRDragHeader.h */,
 				96341BE51F73CCD7000D8D71 /* RRDragHeader.m */,
+				96341BE21F73CCD7000D8D71 /* RRDragFooter.h */,
+				96341BE31F73CCD7000D8D71 /* RRDragFooter.m */,
 			);
 			path = RRDrag;
 			sourceTree = "<group>";
@@ -304,6 +307,8 @@
 				96BB5CEF1ECE33FC00B2D788 /* Info.plist */,
 				9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */,
 				9629B4FE1ECFFF3600F9ABB4 /* Remember.pch */,
+				96021C9C1F94AF4A00BBE31C /* RRDefine.h */,
+				96021C9B1F94AF4A00BBE31C /* RRDefine.m */,
 				96BB5CFD1ECE47BC00B2D788 /* Classes */,
 				96BB5D031ECE47BC00B2D788 /* Public */,
 				96BB5CDE1ECE33FC00B2D788 /* Supporting Files */,
@@ -355,12 +360,12 @@
 				96341BED1F7BECD0000D8D71 /* TextViewController.m */,
 				9629B5081ED087A800F9ABB4 /* BaseNavigationController.h */,
 				9629B5091ED087A800F9ABB4 /* BaseNavigationController.m */,
+				96341BDC1F73CCB9000D8D71 /* RRListViewController.h */,
+				96341BDD1F73CCB9000D8D71 /* RRListViewController.m */,
 				96341BD81F73CCB9000D8D71 /* RRConfigureViewController.h */,
 				96341BD91F73CCB9000D8D71 /* RRConfigureViewController.m */,
 				96341BDA1F73CCB9000D8D71 /* RRContainerViewController.h */,
 				96341BDB1F73CCB9000D8D71 /* RRContainerViewController.m */,
-				96341BDC1F73CCB9000D8D71 /* RRListViewController.h */,
-				96341BDD1F73CCB9000D8D71 /* RRListViewController.m */,
 				967E25B81F35C427003096B2 /* ContactViewController.h */,
 				967E25B91F35C427003096B2 /* ContactViewController.m */,
 				967E25BB1F35C4FC003096B2 /* ContactViewController.xib */,
@@ -535,6 +540,7 @@
 				96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */,
 				96341BEB1F73CCD7000D8D71 /* XXPageControllers.m in Sources */,
 				9629B5041ED002C900F9ABB4 /* UIBarButtonItem+Custom.m in Sources */,
+				96021C9D1F94AF4B00BBE31C /* RRDefine.m in Sources */,
 				DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */,
 				9629B5691ED5D89E00F9ABB4 /* ChineseCalendarDB.cpp in Sources */,
 				967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */,

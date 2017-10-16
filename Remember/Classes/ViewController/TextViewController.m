@@ -37,13 +37,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    RRListViewController *vcConfigure = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(RRListViewController.class)];
-    self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:vcConfigure];
-    [self.animator setContentScrollView:vcConfigure.tvList];
-    self.animator.direction = ZFModalTransitonDirectionBottom;
-    vcConfigure.transitioningDelegate = self.animator;
-    [self presentViewController:vcConfigure animated:YES completion:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    RRListViewController *vcConfigure = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(RRListViewController.class)];
+//    self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:vcConfigure];
+//    [self.animator setContentScrollView:vcConfigure.tvList];
+//    self.animator.direction = ZFModalTransitonDirectionBottom;
+//    vcConfigure.transitioningDelegate = self.animator;
+//    [self presentViewController:vcConfigure animated:YES completion:nil];
 }
 
 @end
