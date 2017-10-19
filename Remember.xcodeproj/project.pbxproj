@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		96021C9D1F94AF4B00BBE31C /* RRDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021C9B1F94AF4A00BBE31C /* RRDefine.m */; };
+		96021CA81F98B3B100BBE31C /* NSObject+RRTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA01F98B3B000BBE31C /* NSObject+RRTransition.m */; };
+		96021CA91F98B3B100BBE31C /* RRTransitionManager+TopBottomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA31F98B3B000BBE31C /* RRTransitionManager+TopBottomAnimation.m */; };
+		96021CAA1F98B3B100BBE31C /* RRTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA51F98B3B000BBE31C /* RRTransitionManager.m */; };
+		96021CAB1F98B3B100BBE31C /* UIViewController+RRPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA71F98B3B000BBE31C /* UIViewController+RRPresentTransition.m */; };
 		9629B4F61ECFF14200F9ABB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */; };
 		9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9629B4F91ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m */; };
 		9629B5041ED002C900F9ABB4 /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9629B5031ED002C900F9ABB4 /* UIBarButtonItem+Custom.m */; };
@@ -58,6 +62,15 @@
 		81CC84E89687EDCEC9225955 /* Pods-Remember.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.debug.xcconfig"; sourceTree = "<group>"; };
 		96021C9B1F94AF4A00BBE31C /* RRDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDefine.m; sourceTree = "<group>"; };
 		96021C9C1F94AF4A00BBE31C /* RRDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRDefine.h; sourceTree = "<group>"; };
+		96021C9F1F98B3B000BBE31C /* NSObject+RRTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RRTransition.h"; sourceTree = "<group>"; };
+		96021CA01F98B3B000BBE31C /* NSObject+RRTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RRTransition.m"; sourceTree = "<group>"; };
+		96021CA11F98B3B000BBE31C /* RRTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRTransition.h; sourceTree = "<group>"; };
+		96021CA21F98B3B000BBE31C /* RRTransitionManager+TopBottomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RRTransitionManager+TopBottomAnimation.h"; sourceTree = "<group>"; };
+		96021CA31F98B3B000BBE31C /* RRTransitionManager+TopBottomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RRTransitionManager+TopBottomAnimation.m"; sourceTree = "<group>"; };
+		96021CA41F98B3B000BBE31C /* RRTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRTransitionManager.h; sourceTree = "<group>"; };
+		96021CA51F98B3B000BBE31C /* RRTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRTransitionManager.m; sourceTree = "<group>"; };
+		96021CA61F98B3B000BBE31C /* UIViewController+RRPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RRPresentTransition.h"; sourceTree = "<group>"; };
+		96021CA71F98B3B000BBE31C /* UIViewController+RRPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RRPresentTransition.m"; sourceTree = "<group>"; };
 		9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9629B4F81ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentInWindow.h"; sourceTree = "<group>"; };
 		9629B4F91ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentInWindow.m"; sourceTree = "<group>"; };
@@ -162,6 +175,22 @@
 				7C19134DF3D5CF2541B91203 /* Pods-Remember.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		96021C9E1F98B3B000BBE31C /* RRTransition */ = {
+			isa = PBXGroup;
+			children = (
+				96021CA11F98B3B000BBE31C /* RRTransition.h */,
+				96021CA41F98B3B000BBE31C /* RRTransitionManager.h */,
+				96021CA51F98B3B000BBE31C /* RRTransitionManager.m */,
+				96021C9F1F98B3B000BBE31C /* NSObject+RRTransition.h */,
+				96021CA01F98B3B000BBE31C /* NSObject+RRTransition.m */,
+				96021CA21F98B3B000BBE31C /* RRTransitionManager+TopBottomAnimation.h */,
+				96021CA31F98B3B000BBE31C /* RRTransitionManager+TopBottomAnimation.m */,
+				96021CA61F98B3B000BBE31C /* UIViewController+RRPresentTransition.h */,
+				96021CA71F98B3B000BBE31C /* UIViewController+RRPresentTransition.m */,
+			);
+			path = RRTransition;
 			sourceTree = "<group>";
 		};
 		9629B4F71ECFFD3B00F9ABB4 /* Category */ = {
@@ -376,6 +405,7 @@
 		96BB5D031ECE47BC00B2D788 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				96021C9E1F98B3B000BBE31C /* RRTransition */,
 				967304151F8D0A2A0058AE54 /* RRMultiDelegate */,
 				96341BEF1F7BECDF000D8D71 /* ZFDragableModalTransition */,
 				96341BE11F73CCD7000D8D71 /* RRDrag */,
@@ -530,6 +560,7 @@
 				9629B5611ED4174C00F9ABB4 /* NSArray+Helper.m in Sources */,
 				9629B50A1ED087A800F9ABB4 /* BaseNavigationController.m in Sources */,
 				96341BEA1F73CCD7000D8D71 /* RRDragHeader.m in Sources */,
+				96021CA91F98B3B100BBE31C /* RRTransitionManager+TopBottomAnimation.m in Sources */,
 				967E25B61F35C211003096B2 /* PPGetAddressBook.m in Sources */,
 				9629B56A1ED5D89E00F9ABB4 /* ChineseDate.cpp in Sources */,
 				96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */,
@@ -539,10 +570,12 @@
 				9629B5071ED0041600F9ABB4 /* UILabel+Custom.m in Sources */,
 				96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */,
 				96341BEB1F73CCD7000D8D71 /* XXPageControllers.m in Sources */,
+				96021CAB1F98B3B100BBE31C /* UIViewController+RRPresentTransition.m in Sources */,
 				9629B5041ED002C900F9ABB4 /* UIBarButtonItem+Custom.m in Sources */,
 				96021C9D1F94AF4B00BBE31C /* RRDefine.m in Sources */,
 				DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */,
 				9629B5691ED5D89E00F9ABB4 /* ChineseCalendarDB.cpp in Sources */,
+				96021CAA1F98B3B100BBE31C /* RRTransitionManager.m in Sources */,
 				967E25B71F35C211003096B2 /* PPPersonModel.m in Sources */,
 				96341BEE1F7BECD0000D8D71 /* TextViewController.m in Sources */,
 				9629B55C1ED2D6AB00F9ABB4 /* XXDatePickerView.m in Sources */,
@@ -556,6 +589,7 @@
 				967E25B51F35C211003096B2 /* PPAddressBookHandle.m in Sources */,
 				9629B5591ED2BF8300F9ABB4 /* XXChineseDateModel.m in Sources */,
 				9636F5941EE5D09F0021683F /* DateModel.m in Sources */,
+				96021CA81F98B3B100BBE31C /* NSObject+RRTransition.m in Sources */,
 				9629B5501ED1CCD200F9ABB4 /* XXDateModel.m in Sources */,
 				96341BDF1F73CCB9000D8D71 /* RRContainerViewController.m in Sources */,
 				96341BDE1F73CCB9000D8D71 /* RRConfigureViewController.m in Sources */,

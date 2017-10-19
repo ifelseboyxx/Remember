@@ -12,6 +12,7 @@
 #import "KIZMultipleProxyBehavior.h"
 
 #import "TextViewController.h"
+#import "RRTransition.h"
 
 @interface RRListViewController ()
 <UITableViewDelegate,UITableViewDataSource>
@@ -72,7 +73,7 @@
         @strongify(self);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];
-        [self presentViewController:vc animated:YES completion:nil];
+        [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
     };
     
 
@@ -126,8 +127,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
 }
 
 @end
