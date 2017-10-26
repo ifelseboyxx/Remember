@@ -8,18 +8,17 @@
 
 #import "TextViewController.h"
 #import "RRListViewController.h"
-#import "ZFDragableModalTransition.h"
 #import "MainListCell.h"
+#import "KIZMultipleProxyBehavior.h"
+#import "RRDragFooter.h"
+
 @interface TextViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) ZFModalTransitionAnimator *animator;
 @end
 
-@implementation TextViewController
-
-- (IBAction)click:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+@implementation TextViewController {
+    KIZMultipleProxyBehavior *_multipleDelegate; //multi delegate object
 }
 
 - (void)dealloc {
@@ -36,6 +35,25 @@
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    
+    
+    
+    RRDragFooter *footer = [RRDragFooter new];
+    @weakify(self);
+    footer.RRFooterRefreshingBlock = ^{
+        @strongify(self);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    
+    self.tableView.mj_footer = (id)footer;
+    
+    _multipleDelegate = [KIZMultipleProxyBehavior new];
+    //多个对象监听 delegate
+    NSArray *array = @[self, footer];
+    _multipleDelegate.delegateTargets = array;
+    self.tableView.delegate = (id)_multipleDelegate;
+    self.tableView.dataSource = (id)_multipleDelegate;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,13 +88,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    RRListViewController *vcConfigure = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(RRListViewController.class)];
-//    self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:vcConfigure];
-//    [self.animator setContentScrollView:vcConfigure.tvList];
-//    self.animator.direction = ZFModalTransitonDirectionBottom;
-//    vcConfigure.transitioningDelegate = self.animator;
-//    [self presentViewController:vcConfigure animated:YES completion:nil];
+
 }
 
 @end

@@ -69,7 +69,7 @@
 - (void)pullDown {
     RRDragHeader *header = [RRDragHeader new];
     @weakify(self);
-    header.RRWillRefreshingBlock = ^{
+    header.RRHeaderRefreshingBlock = ^{
         @strongify(self);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
-#define kDuration 0.4f
+#define kDuration 0.5f
 
 #import <Foundation/Foundation.h>
 

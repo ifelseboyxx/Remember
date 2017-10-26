@@ -130,7 +130,7 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 - (void)pullUp {
     RRDragFooter *footer = [RRDragFooter new];
     @weakify(self);
-    footer.RRWillRefreshingBlock = ^{
+    footer.RRFooterRefreshingBlock = ^{
         @strongify(self);
         if (self.delegateSignal) {
             [self.delegateSignal sendNext:nil];

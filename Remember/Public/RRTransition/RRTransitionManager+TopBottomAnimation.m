@@ -20,24 +20,26 @@
     [containerView addSubview:fromView];
     [containerView addSubview:toView];
     
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    toView.frame = CGRectMake(0, -toView.frame.size.height, toView.frame.size.width, toView.frame.size.height);
     
-    toView.layer.transform = CATransform3DMakeTranslation(screenWidth,0,0);
+    NSLog(@"%@   %@",NSStringFromCGRect(fromView.frame),NSStringFromCGRect(toView.frame));
+    
+    CGRect fromViewRect = fromView.frame;
+    
     [UIView animateWithDuration:kDuration animations:^{
-        
-        fromView.layer.transform = CATransform3DMakeScale(0.95,0.95,1);
-        toView.layer.transform = CATransform3DIdentity;
+        toView.frame = CGRectMake(0, 0, toView.frame.size.width, toView.frame.size.height);
+        fromView.frame = CGRectMake(0, fromViewRect.size.height, fromViewRect.size.width, fromViewRect.size.height);
         
     } completion:^(BOOL finished){
         
         if ([transitionContext transitionWasCancelled]) {
             [transitionContext completeTransition:NO];
-            fromView.layer.transform = CATransform3DIdentity;
-            
+
         }else{
             [transitionContext completeTransition:YES];
-            fromView.layer.transform = CATransform3DIdentity;
+
         }
+        NSLog(@"%@   %@",NSStringFromCGRect(fromView.frame),NSStringFromCGRect(toView.frame));
     }];
 }
 
@@ -47,28 +49,23 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
-    UIView *tempToView = [toVC.view snapshotViewAfterScreenUpdates:YES];
-    UIView *tempFromView = [fromVC.view snapshotViewAfterScreenUpdates:YES];
-    
     UIView *fromView = fromVC.view;
     UIView *toView = toVC.view;
     
     [containerView addSubview:toView];
     [containerView addSubview:fromView];
     
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    toView.layer.transform = CATransform3DMakeScale(0.95,0.95,1);
-    fromView.layer.transform = CATransform3DIdentity;
+    
+    fromView.frame = CGRectMake(0, 0, fromView.frame.size.width, fromView.frame.size.height);
+    
+     CGRect fromViewRect = fromView.frame;
+    
     [UIView animateWithDuration:kDuration animations:^{
-        toView.layer.transform = CATransform3DIdentity;
-        fromView.layer.transform = CATransform3DMakeTranslation(screenWidth,0,0);
+        toView.frame = CGRectMake(0, 0, toView.frame.size.width, toView.frame.size.height);
+        fromView.frame = CGRectMake(0, -fromViewRect.size.height, fromViewRect.size.width, fromViewRect.size.height);
         
     } completion:^(BOOL finished){
-        
-        [tempToView removeFromSuperview];
-        toView.hidden = NO;
-        [tempFromView removeFromSuperview];
-        toView.layer.transform = CATransform3DIdentity;
+    
         if ([transitionContext transitionWasCancelled]) {
             [transitionContext completeTransition:NO];
         }else{

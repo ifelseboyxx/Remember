@@ -6,10 +6,10 @@
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
-#import "MJRefreshBackFooter.h"
+#import "MJRefreshComponent.h"
 
-@interface RRDragFooter : MJRefreshBackFooter
+@interface RRDragFooter : MJRefreshComponent
 
-@property (copy, nonatomic) void (^RRWillRefreshingBlock)();
+@property (copy, nonatomic) void (^RRFooterRefreshingBlock)();
 
 @end

@@ -10,6 +10,6 @@
 
 @interface RRDragHeader : MJRefreshComponent
 
-@property (copy, nonatomic) void (^RRWillRefreshingBlock)();
+@property (copy, nonatomic) void (^RRHeaderRefreshingBlock)();
 
 @end

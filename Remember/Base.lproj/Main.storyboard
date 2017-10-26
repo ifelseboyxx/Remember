@@ -253,14 +253,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U6J-0d-ADN">
-                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="click:" destination="X1E-Tc-4Cw" eventType="touchUpInside" id="b9E-g6-G1v"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="N3I-tE-T9i">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -271,15 +263,12 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="X1E-Tc-4Cw" id="Ovh-a7-qhh"/>
-                            <outlet property="delegate" destination="X1E-Tc-4Cw" id="G6t-ob-yrl"/>
-                        </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="NS5-To-CUH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzY-JX-5B1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638" y="-651"/>
+            <point key="canvasLocation" x="1554" y="-685"/>
         </scene>
     </scenes>
 </document>

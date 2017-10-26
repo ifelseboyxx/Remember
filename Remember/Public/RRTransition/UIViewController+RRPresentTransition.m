@@ -15,6 +15,7 @@
                       completion:(void (^)(void))completion {
     
     viewController.transitioningDelegate = viewController;
+//    viewController.modalPresentationStyle = UIModalPresentationCustom;
     self.rr_transition.animationType = animationType;
     [self presentViewController:viewController animated:YES completion:completion];
 }

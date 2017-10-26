@@ -6,7 +6,7 @@
 //  Copyright © 2017年 ifelseboyxx. All rights reserved.
 //
 
-#define kLimit (-125)
+#define kLimit (-90)
 
 #import "RRDragHeader.h"
 
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation RRDragHeader
+@implementation RRDragHeader 
 
 - (UILabel *)stateLabel
 {
@@ -33,12 +33,14 @@
 {
     [super prepare];
     
+//    self.backgroundColor = [UIColor redColor];
+    
     // 设置高度
     self.mj_h = MJRefreshHeaderHeight;
     
     self.stateLabel.font = [UIFont systemFontOfSize:20.f];
     self.stateLabel.textColor = RRHexColor(RRHeaderTextColor);
-    
+//    self.stateLabel.backgroundColor = [UIColor greenColor];
 }
 
 - (void)placeSubviews
@@ -73,23 +75,14 @@
         case MJRefreshStatePulling:
             self.stateLabel.text = @"松开新增";
             break;
-        case MJRefreshStateRefreshing:
-            self.stateLabel.text = @"松开新增";
-            break;
         default:
             break;
     }
 }
 
-- (void)scrollViewContentOffsetDidChange:(NSDictionary *)change
-{
-    [super scrollViewContentOffsetDidChange:change];
-    
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    float offset = scrollView.contentOffset.y;
     
+    float offset = scrollView.contentOffset.y;
     if (offset < kLimit) {
         self.state = MJRefreshStatePulling;
     }else{
@@ -101,8 +94,9 @@
     float offset = scrollView.contentOffset.y;
 
     if (offset < kLimit) {
-        self.scrollView.mj_insetT = ABS(scrollView.contentOffset.y);
-        !self.RRWillRefreshingBlock ?: self.RRWillRefreshingBlock();
+        self.state = MJRefreshStatePulling;
+        self.scrollView.mj_insetT = ABS(offset);
+        !self.RRHeaderRefreshingBlock ?: self.RRHeaderRefreshingBlock();
     }
 }
 @end
