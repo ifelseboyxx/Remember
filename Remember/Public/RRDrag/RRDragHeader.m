@@ -16,9 +16,13 @@
 /** 显示刷新状态的label */
 @property (weak, nonatomic) UILabel *stateLabel;
 
+/** 震动反馈 */
+@property (strong, nonatomic) UIImpactFeedbackGenerator *generator;
 @end
 
-@implementation RRDragHeader 
+@implementation RRDragHeader {
+    BOOL _toptic;
+}
 
 - (UILabel *)stateLabel
 {
@@ -26,6 +30,13 @@
         [self addSubview:_stateLabel = [UILabel mj_label]];
     }
     return _stateLabel;
+}
+
+- (UIImpactFeedbackGenerator *)generator {
+    if (!_generator) {
+        _generator = [[UIImpactFeedbackGenerator alloc] initWithStyle: UIImpactFeedbackStyleLight];
+    }
+    return _generator;
 }
 
 #pragma mark - 覆盖父类的方法
@@ -84,9 +95,16 @@
     
     float offset = scrollView.contentOffset.y;
     if (offset < kLimit) {
-        self.state = MJRefreshStatePulling;
+        if (!_toptic) {
+            self.state = MJRefreshStatePulling;
+            //震动反馈
+            [self.generator prepare];
+            [self.generator impactOccurred];
+            _toptic = YES;
+        }
     }else{
         self.state = MJRefreshStateIdle;
+        _toptic = NO;
     }
 }
 
