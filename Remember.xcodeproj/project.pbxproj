@@ -12,6 +12,8 @@
 		96021CA91F98B3B100BBE31C /* RRTransitionManager+TopBottomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA31F98B3B000BBE31C /* RRTransitionManager+TopBottomAnimation.m */; };
 		96021CAA1F98B3B100BBE31C /* RRTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA51F98B3B000BBE31C /* RRTransitionManager.m */; };
 		96021CAB1F98B3B100BBE31C /* UIViewController+RRPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96021CA71F98B3B000BBE31C /* UIViewController+RRPresentTransition.m */; };
+		96021CB21FA7364000BBE31C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96021CB41FA7364000BBE31C /* InfoPlist.strings */; };
+		96021CB91FA736E800BBE31C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96021CBB1FA736E800BBE31C /* Localizable.strings */; };
 		9629B4F61ECFF14200F9ABB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */; };
 		9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9629B4F91ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m */; };
 		9629B5041ED002C900F9ABB4 /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 9629B5031ED002C900F9ABB4 /* UIBarButtonItem+Custom.m */; };
@@ -71,6 +73,16 @@
 		96021CA51F98B3B000BBE31C /* RRTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRTransitionManager.m; sourceTree = "<group>"; };
 		96021CA61F98B3B000BBE31C /* UIViewController+RRPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RRPresentTransition.h"; sourceTree = "<group>"; };
 		96021CA71F98B3B000BBE31C /* UIViewController+RRPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RRPresentTransition.m"; sourceTree = "<group>"; };
+		96021CAC1FA7361000BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		96021CAD1FA7361100BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		96021CAE1FA7361600BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		96021CAF1FA7361600BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		96021CB31FA7364000BBE31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		96021CB51FA7364200BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		96021CB61FA7364300BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		96021CBA1FA736E800BBE31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		96021CBC1FA736EA00BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		96021CBD1FA736EB00BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9629B4F81ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentInWindow.h"; sourceTree = "<group>"; };
 		9629B4F91ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentInWindow.m"; sourceTree = "<group>"; };
@@ -140,7 +152,7 @@
 		96BB5CDB1ECE33FC00B2D788 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BB5CDF1ECE33FC00B2D788 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BB5CE11ECE33FC00B2D788 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		96BB5CE21ECE33FC00B2D788 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		96BB5CE21ECE33FC00B2D788 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; wrapsLines = 0; };
 		96BB5CE81ECE33FC00B2D788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96BB5CED1ECE33FC00B2D788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96BB5CEF1ECE33FC00B2D788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -334,6 +346,8 @@
 				96BB5CE71ECE33FC00B2D788 /* Main.storyboard */,
 				96BB5CEC1ECE33FC00B2D788 /* LaunchScreen.storyboard */,
 				96BB5CEF1ECE33FC00B2D788 /* Info.plist */,
+				96021CBB1FA736E800BBE31C /* Localizable.strings */,
+				96021CB41FA7364000BBE31C /* InfoPlist.strings */,
 				9629B4F51ECFF14200F9ABB4 /* Assets.xcassets */,
 				9629B4FE1ECFFF3600F9ABB4 /* Remember.pch */,
 				96021C9C1F94AF4A00BBE31C /* RRDefine.h */,
@@ -474,6 +488,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 96BB5CD21ECE33FC00B2D788;
 			productRefGroup = 96BB5CDC1ECE33FC00B2D788 /* Products */;
@@ -491,9 +507,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9636F5911ED7B9B80021683F /* XXDatePickerView.xib in Resources */,
+				96021CB21FA7364000BBE31C /* InfoPlist.strings in Resources */,
 				967E25BC1F35C4FC003096B2 /* ContactViewController.xib in Resources */,
 				9629B4F61ECFF14200F9ABB4 /* Assets.xcassets in Resources */,
 				96BB5CEE1ECE33FC00B2D788 /* LaunchScreen.storyboard in Resources */,
+				96021CB91FA736E800BBE31C /* Localizable.strings in Resources */,
 				96BB5E4B1ECE82B600B2D788 /* MainListCell.xib in Resources */,
 				96BB5CE91ECE33FC00B2D788 /* Main.storyboard in Resources */,
 			);
@@ -599,10 +617,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		96021CB41FA7364000BBE31C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96021CB31FA7364000BBE31C /* en */,
+				96021CB51FA7364200BBE31C /* zh-Hans */,
+				96021CB61FA7364300BBE31C /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		96021CBB1FA736E800BBE31C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96021CBA1FA736E800BBE31C /* en */,
+				96021CBC1FA736EA00BBE31C /* zh-Hans */,
+				96021CBD1FA736EB00BBE31C /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		96BB5CE71ECE33FC00B2D788 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				96BB5CE81ECE33FC00B2D788 /* Base */,
+				96021CAC1FA7361000BBE31C /* zh-Hans */,
+				96021CAE1FA7361600BBE31C /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -611,6 +651,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				96BB5CED1ECE33FC00B2D788 /* Base */,
+				96021CAD1FA7361100BBE31C /* zh-Hans */,
+				96021CAF1FA7361600BBE31C /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -622,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -670,6 +713,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Remember
+
+  Created by Jason on 2017/10/30.
+  Copyright © 2017年 ifelseboyxx. All rights reserved.
+*/
+
+
+//下拉提示文案
+"header_1" = "下拉新增";
+"header_2" = "松開新增";
+
+//上拉提示文案
+"footer_1" = "上拉返回";
+"footer_2" = "松開返回";

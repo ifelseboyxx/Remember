@@ -76,10 +76,10 @@
 
     switch (state) {
         case MJRefreshStateIdle:
-            self.stateLabel.text = @"下拉新增";
+            self.stateLabel.text = NSLocalizedString(@"header_1", nil);
             break;
         case MJRefreshStatePulling:
-            self.stateLabel.text = @"松开新增";
+            self.stateLabel.text = NSLocalizedString(@"header_2", nil);
             break;
         default:
             break;

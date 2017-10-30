@@ -13,6 +13,9 @@
 #define RRHexColor(HexStr) [UIColor colorWithHexString:HexStr];
 #define RRHexColorAlpha(HexStr,Aplha) [UIColor colorWithHexString:RRHeaderTextColor withAlpha:Aplha];
 
+//语言切换 (zh-Hans、zh-Hant、en)
+#define RRLanguage(format) [[NSUserDefaults standardUserDefaults] setObject:@[format] forKey:@"AppleLanguages"];
+
 /***********************************业务*******************************************/
 
 //下拉字体颜色

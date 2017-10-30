@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Remember
+
+  Created by Jason on 2017/10/30.
+  Copyright © 2017年 ifelseboyxx. All rights reserved.
+*/
+
+
+
+//下拉提示文案
+"header_1" = "Pull down to add";
+"header_2" = "Release to add";
+
+//上拉提示文案
+"footer_1" = "Pull up to back";
+"footer_2" = "Release to back";
