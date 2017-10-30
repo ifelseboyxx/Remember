@@ -10,9 +10,9 @@
 #import "MainListCell.h"
 #import "RRDragHeader.h"
 #import "KIZMultipleProxyBehavior.h"
-
-#import "TextViewController.h"
 #import "RRTransition.h"
+#import "RRConfigureViewController.h"
+#import "BaseNavigationController.h"
 
 @interface RRListViewController ()
 <UITableViewDelegate,UITableViewDataSource>
@@ -29,6 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (@available(iOS 11.0, *)) {
+        self.tvList.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     
     [self setUpNavItemUI];
     
@@ -72,7 +76,7 @@
     header.RRHeaderRefreshingBlock = ^{
         @strongify(self);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];
+        BaseNavigationController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(BaseNavigationController.class)];
         [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
     };
     
@@ -125,9 +129,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    TextViewController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(TextViewController.class)];
-    [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
 }
 
 @end

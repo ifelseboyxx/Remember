@@ -22,8 +22,6 @@
     
     toView.frame = CGRectMake(0, -toView.frame.size.height, toView.frame.size.width, toView.frame.size.height);
     
-    NSLog(@"%@   %@",NSStringFromCGRect(fromView.frame),NSStringFromCGRect(toView.frame));
-    
     CGRect fromViewRect = fromView.frame;
     
     [UIView animateWithDuration:kDuration animations:^{
@@ -31,15 +29,7 @@
         fromView.frame = CGRectMake(0, fromViewRect.size.height, fromViewRect.size.width, fromViewRect.size.height);
         
     } completion:^(BOOL finished){
-        
-        if ([transitionContext transitionWasCancelled]) {
-            [transitionContext completeTransition:NO];
-
-        }else{
-            [transitionContext completeTransition:YES];
-
-        }
-        NSLog(@"%@   %@",NSStringFromCGRect(fromView.frame),NSStringFromCGRect(toView.frame));
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
 }
 
@@ -63,14 +53,8 @@
     [UIView animateWithDuration:kDuration animations:^{
         toView.frame = CGRectMake(0, 0, toView.frame.size.width, toView.frame.size.height);
         fromView.frame = CGRectMake(0, -fromViewRect.size.height, fromViewRect.size.width, fromViewRect.size.height);
-        
     } completion:^(BOOL finished){
-    
-        if ([transitionContext transitionWasCancelled]) {
-            [transitionContext completeTransition:NO];
-        }else{
-            [transitionContext completeTransition:YES];
-        }
+       [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
     
 }

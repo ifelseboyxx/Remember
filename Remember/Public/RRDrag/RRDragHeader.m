@@ -9,6 +9,7 @@
 #define kLimit (-90)
 
 #import "RRDragHeader.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface RRDragHeader ()
 <UIScrollViewDelegate>
@@ -32,26 +33,20 @@
     return _stateLabel;
 }
 
-- (UIImpactFeedbackGenerator *)generator {
-    if (!_generator) {
-        _generator = [[UIImpactFeedbackGenerator alloc] initWithStyle: UIImpactFeedbackStyleLight];
-    }
-    return _generator;
-}
-
 #pragma mark - 覆盖父类的方法
 - (void)prepare
 {
     [super prepare];
     
-//    self.backgroundColor = [UIColor redColor];
-    
     // 设置高度
     self.mj_h = MJRefreshHeaderHeight;
     
+    _generator = [[UIImpactFeedbackGenerator alloc] initWithStyle: UIImpactFeedbackStyleLight];
+    [_generator prepare];
+    
     self.stateLabel.font = [UIFont systemFontOfSize:20.f];
     self.stateLabel.textColor = RRHexColor(RRHeaderTextColor);
-//    self.stateLabel.backgroundColor = [UIColor greenColor];
+
 }
 
 - (void)placeSubviews
@@ -94,12 +89,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     float offset = scrollView.contentOffset.y;
+        
     if (offset < kLimit) {
         if (!_toptic) {
             self.state = MJRefreshStatePulling;
             //震动反馈
-            [self.generator prepare];
-            [self.generator impactOccurred];
+            [_generator impactOccurred];
             _toptic = YES;
         }
     }else{

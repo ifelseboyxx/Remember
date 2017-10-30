@@ -28,6 +28,7 @@
 #import "MJRefresh.h"
 #import "RRDragFooter.h"
 
+#import "KIZMultipleProxyBehavior.h"
 
 typedef NS_ENUM(NSUInteger,AddVCSectionType){
     AddVCSectionTypeInfo = 0,  //信息
@@ -57,50 +58,23 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 @end
 
 @implementation RRConfigureViewController {
+    KIZMultipleProxyBehavior *_multipleDelegate; //multi delegate object
     BOOL _showTime; //是否显示 时间选择器
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImage:@"back" target:self action:@selector(backClick)];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     
-    UIBarButtonItem *completeItem = [UIBarButtonItem barButtonItemWithImage:@"complete" disabledImage:@"complete_enabled" target:self action:@selector(completeClick) size:CGSizeMake(28.0f, 28.0f)];
-    self.completeItem = completeItem;
-    completeItem.enabled = NO;
-    
-    UIBarButtonItem *userItem = [UIBarButtonItem barButtonItemWithImage:@"user" target:self action:@selector(userClick) size:CGSizeMake(26.0f, 26.0f)];
-    
-    self.navigationItem.rightBarButtonItems = @[completeItem,userItem];
-    
-    self.navigationItem.titleView = [UILabel labelWithTitle:@"新增"];
-    
-    self.nameTextView.textContainerInset = UIEdgeInsetsMake(0.0f, -3.0f, 0.0f, 0.0f);
-    self.remarkTextView.textContainerInset = UIEdgeInsetsMake(10.0f, -3.0f, 10.0f, 0.0f);
-    
-    [self setRemindTimeWithDate:[NSDate date]];
+    //上拉
+    [self pullUp];
     
     //获取通讯录权限
     [PPGetAddressBook requestAddressBookAuthorization];
     
-//    [self pullUp];
-    
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    float offset = scrollView.contentOffset.y;
-    
-    NSLog(@"%f",offset);
-    
-    if (offset > 160) {
-        self.tableView.mj_insetT = -scrollView.contentOffset.y;
-        if (self.delegateSignal) {
-            [self.delegateSignal sendNext:nil];
-        }
-    }else{
-        
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -117,8 +91,8 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.tableView setContentOffset:CGPointZero];
-    self.tableView.mj_insetT = 0;
+//    [self.tableView setContentOffset:CGPointZero];
+//    self.tableView.mj_insetB = 0;
 }
 
 - (void)dealloc {
@@ -132,13 +106,16 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     @weakify(self);
     footer.RRFooterRefreshingBlock = ^{
         @strongify(self);
-        if (self.delegateSignal) {
-            [self.delegateSignal sendNext:nil];
-        }
-        [self.tableView.mj_footer endRefreshing];
+        [self dismissViewControllerAnimated:YES completion:nil];
     };
+    self.tableView.mj_footer = (id)footer;
     
-    self.tableView.mj_footer = footer;
+    _multipleDelegate = [KIZMultipleProxyBehavior new];
+    //多个对象监听 delegate
+    NSArray *array = @[self, footer];
+    _multipleDelegate.delegateTargets = array;
+    self.tableView.delegate = (id)_multipleDelegate;
+    self.tableView.dataSource = (id)_multipleDelegate;
 }
 
 - (IBAction)timeSelected:(UIDatePicker *)sender {

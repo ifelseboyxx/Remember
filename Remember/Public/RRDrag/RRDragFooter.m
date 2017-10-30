@@ -14,11 +14,13 @@
 
 /** 显示刷新状态的label */
 @property (weak, nonatomic) UILabel *stateLabel;
-
+/** 震动反馈 */
+@property (strong, nonatomic) UIImpactFeedbackGenerator *generator;
 @end
 
 @implementation RRDragFooter {
     BOOL _refreshed;
+    BOOL _toptic;
 }
 
 - (UILabel *)stateLabel
@@ -37,12 +39,10 @@
     // 设置高度
     self.mj_h = MJRefreshHeaderHeight;
     
-//    self.backgroundColor = [UIColor brownColor];
+    _generator = [[UIImpactFeedbackGenerator alloc] initWithStyle: UIImpactFeedbackStyleLight];
     
     self.stateLabel.font = [UIFont systemFontOfSize:20.f];
     self.stateLabel.textColor = RRHexColor(RRHeaderTextColor);
-//    self.stateLabel.backgroundColor = [UIColor greenColor];
-    
 }
 
 #pragma mark 在这里设置子控件的位置和尺寸
@@ -86,9 +86,12 @@
     if (_scrollView.mj_insetT + _scrollView.mj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
         // 上拉控件全部显示出来了
         if (_scrollView.mj_offsetY >= _scrollView.mj_contentH - _scrollView.mj_h + self.mj_h + _scrollView.mj_insetB + kLimit) {
-            _refreshed = YES;
-            self.scrollView.mj_insetB = ABS(scrollView.contentOffset.y);
-            !self.RRFooterRefreshingBlock ?: self.RRFooterRefreshingBlock();
+            [self footerBlcokActive:ABS(scrollView.contentOffset.y)];
+        }
+    }else{ //不超过一个频幕
+        // 上拉控件全部显示出来了
+        if (_scrollView.mj_offsetY > self.mj_h + _scrollView.mj_insetB + kLimit) {
+            [self footerBlcokActive:ABS(scrollView.contentOffset.y + self.scrollView.mj_contentH)];
         }
     }
 }
@@ -96,14 +99,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if (_refreshed) return;
-
+    
     if (_scrollView.mj_insetT + _scrollView.mj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
         // 上拉控件全部显示出来了
-        if (_scrollView.mj_offsetY >= _scrollView.mj_contentH - _scrollView.mj_h + self.mj_h + _scrollView.mj_insetB + kLimit) {
-            self.state = MJRefreshStatePulling;
-        }else{
-            self.state = MJRefreshStateIdle;
-        }
+       [self stateChangeWith:(_scrollView.mj_contentH - _scrollView.mj_h + self.mj_h + _scrollView.mj_insetB + kLimit)];
+    }else{ //不超过一个频幕
+        // 上拉控件全部显示出来了
+        [self stateChangeWith:(self.mj_h + _scrollView.mj_insetB + kLimit)];
     }
 }
 
@@ -111,8 +113,35 @@
 {
     [super scrollViewContentSizeDidChange:change];
     
-    // 设置位置
-    self.mj_y = self.scrollView.mj_contentH;
+    // 内容的高度
+    CGFloat contentHeight = self.scrollView.mj_contentH;
+    // 表格的高度
+    CGFloat scrollHeight = self.scrollView.mj_h - self.scrollViewOriginalInset.top - self.scrollViewOriginalInset.bottom;
+    // 设置位置和尺寸
+    self.mj_y = MAX(contentHeight, scrollHeight);
 }
 
+#pragma mark - 私有函数
+//触发回调 Blcok
+- (void)footerBlcokActive:(CGFloat)insetB {
+    _refreshed = YES;
+    self.scrollView.mj_insetB = insetB;
+    !self.RRFooterRefreshingBlock ?: self.RRFooterRefreshingBlock();
+}
+
+//根据状态改变提示文字
+- (void)stateChangeWith:(CGFloat)limitOffset {
+    if (_scrollView.mj_offsetY >= limitOffset) {
+        if (!_toptic) {
+            self.state = MJRefreshStatePulling;
+            //震动反馈
+            [_generator prepare];
+            [_generator impactOccurred];
+            _toptic = YES;
+        }
+    }else{
+        self.state = MJRefreshStateIdle;
+        _toptic = NO;
+    }
+}
 @end
