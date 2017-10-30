@@ -30,10 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (@available(iOS 11.0, *)) {
-        self.tvList.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    
     [self setUpNavItemUI];
     
     [self pullDown];
@@ -56,8 +52,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.tvList setContentOffset:CGPointZero];
-    self.tvList.mj_insetT = 0;
+    
+    //状态重置
+    [self stateReset];
 }
 
 - (void)dealloc {
@@ -96,12 +93,19 @@
 
 #pragma mark - Private Method
 
+- (void)stateReset {
+    [self.tvList setContentOffset:CGPointZero];
+    self.tvList.mj_insetT = 0.f;
+    self.tvList.bounces = YES;
+}
+
 #pragma mark - Setter Getter Methods
 
 
 #pragma mark - Action
 
 - (void)settingClick {
+    
 }
 
 - (void)addClick {

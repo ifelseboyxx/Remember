@@ -8,6 +8,8 @@
 
 #import "KIZMultipleProxyBehavior.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KIZMultipleProxyBehavior ()
 
 @property (nonatomic, strong) NSPointerArray *weakRefTargets;
@@ -59,4 +61,5 @@
     }
 }
 
+NS_ASSUME_NONNULL_END
 @end

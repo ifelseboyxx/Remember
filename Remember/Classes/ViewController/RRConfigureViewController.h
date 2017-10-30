@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ReactiveObjC.h"
 
-@interface RRConfigureViewController : UITableViewController
+@interface RRConfigureViewController : UIViewController
 
 @property (strong, nonatomic) RACSubject *delegateSignal;
 

@@ -40,6 +40,7 @@
     self.mj_h = MJRefreshHeaderHeight;
     
     _generator = [[UIImpactFeedbackGenerator alloc] initWithStyle: UIImpactFeedbackStyleLight];
+    [_generator prepare];
     
     self.stateLabel.font = [UIFont systemFontOfSize:20.f];
     self.stateLabel.textColor = RRHexColor(RRHeaderTextColor);
@@ -83,12 +84,12 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     
-    if (_scrollView.mj_insetT + _scrollView.mj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
+    if ((_scrollView.mj_insetT + _scrollView.mj_contentH) > (_scrollView.mj_h )) { // 内容超过一个屏幕
         // 上拉控件全部显示出来了
         if (_scrollView.mj_offsetY >= _scrollView.mj_contentH - _scrollView.mj_h + self.mj_h + _scrollView.mj_insetB + kLimit) {
             [self footerBlcokActive:ABS(scrollView.contentOffset.y)];
         }
-    }else{ //不超过一个频幕
+    }else{ //不超过一个屏幕
         // 上拉控件全部显示出来了
         if (_scrollView.mj_offsetY > self.mj_h + _scrollView.mj_insetB + kLimit) {
             [self footerBlcokActive:ABS(scrollView.contentOffset.y + self.scrollView.mj_contentH)];
@@ -100,10 +101,10 @@
     
     if (_refreshed) return;
     
-    if (_scrollView.mj_insetT + _scrollView.mj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
+    if ((_scrollView.mj_insetT + _scrollView.mj_contentH) > (_scrollView.mj_h)) { // 内容超过一个屏幕
         // 上拉控件全部显示出来了
        [self stateChangeWith:(_scrollView.mj_contentH - _scrollView.mj_h + self.mj_h + _scrollView.mj_insetB + kLimit)];
-    }else{ //不超过一个频幕
+    }else{ //不超过一个屏幕
         // 上拉控件全部显示出来了
         [self stateChangeWith:(self.mj_h + _scrollView.mj_insetB + kLimit)];
     }
@@ -119,11 +120,13 @@
     CGFloat scrollHeight = self.scrollView.mj_h - self.scrollViewOriginalInset.top - self.scrollViewOriginalInset.bottom;
     // 设置位置和尺寸
     self.mj_y = MAX(contentHeight, scrollHeight);
+    
 }
 
 #pragma mark - 私有函数
 //触发回调 Blcok
 - (void)footerBlcokActive:(CGFloat)insetB {
+    _scrollView.bounces = NO;
     _refreshed = YES;
     self.scrollView.mj_insetB = insetB;
     !self.RRFooterRefreshingBlock ?: self.RRFooterRefreshingBlock();
@@ -131,11 +134,11 @@
 
 //根据状态改变提示文字
 - (void)stateChangeWith:(CGFloat)limitOffset {
+
     if (_scrollView.mj_offsetY >= limitOffset) {
         if (!_toptic) {
             self.state = MJRefreshStatePulling;
             //震动反馈
-            [_generator prepare];
             [_generator impactOccurred];
             _toptic = YES;
         }

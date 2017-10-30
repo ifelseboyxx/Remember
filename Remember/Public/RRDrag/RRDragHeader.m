@@ -89,7 +89,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     float offset = scrollView.contentOffset.y;
-        
     if (offset < kLimit) {
         if (!_toptic) {
             self.state = MJRefreshStatePulling;
@@ -105,11 +104,12 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     float offset = scrollView.contentOffset.y;
-
     if (offset < kLimit) {
+        scrollView.bounces = NO;
         self.state = MJRefreshStatePulling;
         self.scrollView.mj_insetT = ABS(offset);
         !self.RRHeaderRefreshingBlock ?: self.RRHeaderRefreshingBlock();
     }
 }
+
 @end

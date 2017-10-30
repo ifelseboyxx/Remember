@@ -30,6 +30,8 @@
 
 #import "KIZMultipleProxyBehavior.h"
 
+#import "MainListCell.h"
+
 typedef NS_ENUM(NSUInteger,AddVCSectionType){
     AddVCSectionTypeInfo = 0,  //信息
     AddVCSectionTypeTime,      //时间
@@ -37,7 +39,9 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 };
 
 @interface RRConfigureViewController ()
-<UITextViewDelegate>
+<UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tvConfigure;
 
 @property (weak, nonatomic) IBOutlet XXTextView *nameTextView;
 @property (weak, nonatomic) IBOutlet XXTextView *remarkTextView;
@@ -65,16 +69,13 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    
     //上拉
     [self pullUp];
     
     //获取通讯录权限
     [PPGetAddressBook requestAddressBookAuthorization];
     
+    [self.tvConfigure registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,10 +90,8 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     [super viewWillDisappear:animated];
 }
 
--(void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-//    [self.tableView setContentOffset:CGPointZero];
-//    self.tableView.mj_insetB = 0;
 }
 
 - (void)dealloc {
@@ -108,14 +107,14 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
         @strongify(self);
         [self dismissViewControllerAnimated:YES completion:nil];
     };
-    self.tableView.mj_footer = (id)footer;
+    self.tvConfigure.mj_footer = (id)footer;
     
     _multipleDelegate = [KIZMultipleProxyBehavior new];
     //多个对象监听 delegate
     NSArray *array = @[self, footer];
     _multipleDelegate.delegateTargets = array;
-    self.tableView.delegate = (id)_multipleDelegate;
-    self.tableView.dataSource = (id)_multipleDelegate;
+    self.tvConfigure.delegate = (id)_multipleDelegate;
+    self.tvConfigure.dataSource = (id)_multipleDelegate;
 }
 
 - (IBAction)timeSelected:(UIDatePicker *)sender {
@@ -263,28 +262,18 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
-        _showTime = !_showTime;
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == AddVCSectionTypeRemark) {
-        return k_REMARK_HEIGHT;
-    }
-    if (indexPath.section == AddVCSectionTypeTime && indexPath.row == 1) {
-        if (!_showTime) {
-            tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-            return CGFLOAT_MIN;
-        }else{
-            tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
-            return k_TIMEPICKER_HEIGHT;
-        }
-    }else{
-        return k_NORMAL_HEIGHT;
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MainListCell *cell = [tableView dequeueReusableCellWithIdentifier:MainListCellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor flatBlueColor];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
 }
 @end
