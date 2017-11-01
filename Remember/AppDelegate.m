@@ -14,11 +14,13 @@
 
 @implementation AppDelegate
 
+/**
+ 更新 .storyboard 命令
+ ibtool Main.storyboard --generate-strings-file ./NewTemp.string
+ */
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    RRLanguage(@"zh_Hans");
     
     return YES;
 }
