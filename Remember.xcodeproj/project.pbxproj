@@ -54,6 +54,9 @@
 		96BB5E441ECE489600B2D788 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BB5E431ECE489600B2D788 /* libz.tbd */; };
 		96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BB5E481ECE82B600B2D788 /* MainListCell.m */; };
 		96BB5E4B1ECE82B600B2D788 /* MainListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96BB5E491ECE82B600B2D788 /* MainListCell.xib */; };
+		96DD2C411FA9EFFB00FBED42 /* NSObject+RRNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C3C1FA9EFFB00FBED42 /* NSObject+RRNotification.m */; };
+		96DD2C421FA9EFFB00FBED42 /* RRNotificationMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C3E1FA9EFFB00FBED42 /* RRNotificationMaker.m */; };
+		96DD2C431FA9EFFB00FBED42 /* UIViewController+RRNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C401FA9EFFB00FBED42 /* UIViewController+RRNotification.m */; };
 		D267EEA362A30793676B3F74 /* libPods-Remember.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F3A3053A719C3428E91774 /* libPods-Remember.a */; };
 		DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5FC01E1ED6D73D00B4C87B /* XXDate.m */; };
 /* End PBXBuildFile section */
@@ -156,6 +159,12 @@
 		96BB5E481ECE82B600B2D788 /* MainListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListCell.m; sourceTree = "<group>"; };
 		96BB5E491ECE82B600B2D788 /* MainListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
 		96DD2C391FA960C900FBED42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		96DD2C3B1FA9EFFB00FBED42 /* NSObject+RRNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RRNotification.h"; sourceTree = "<group>"; };
+		96DD2C3C1FA9EFFB00FBED42 /* NSObject+RRNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RRNotification.m"; sourceTree = "<group>"; };
+		96DD2C3D1FA9EFFB00FBED42 /* RRNotificationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRNotificationMaker.h; sourceTree = "<group>"; };
+		96DD2C3E1FA9EFFB00FBED42 /* RRNotificationMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRNotificationMaker.m; sourceTree = "<group>"; };
+		96DD2C3F1FA9EFFB00FBED42 /* UIViewController+RRNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RRNotification.h"; sourceTree = "<group>"; };
+		96DD2C401FA9EFFB00FBED42 /* UIViewController+RRNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RRNotification.m"; sourceTree = "<group>"; };
 		96F3A3053A719C3428E91774 /* libPods-Remember.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remember.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5FC01D1ED6D73C00B4C87B /* XXDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDate.h; sourceTree = "<group>"; };
 		DB5FC01E1ED6D73D00B4C87B /* XXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDate.m; sourceTree = "<group>"; };
@@ -404,6 +413,7 @@
 		96BB5D031ECE47BC00B2D788 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				96DD2C3A1FA9EFFB00FBED42 /* RRNotification */,
 				96021C9E1F98B3B000BBE31C /* RRTransition */,
 				967304151F8D0A2A0058AE54 /* RRMultiDelegate */,
 				96341BE11F73CCD7000D8D71 /* RRDrag */,
@@ -424,6 +434,19 @@
 				96F3A3053A719C3428E91774 /* libPods-Remember.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96DD2C3A1FA9EFFB00FBED42 /* RRNotification */ = {
+			isa = PBXGroup;
+			children = (
+				96DD2C3B1FA9EFFB00FBED42 /* NSObject+RRNotification.h */,
+				96DD2C3C1FA9EFFB00FBED42 /* NSObject+RRNotification.m */,
+				96DD2C3D1FA9EFFB00FBED42 /* RRNotificationMaker.h */,
+				96DD2C3E1FA9EFFB00FBED42 /* RRNotificationMaker.m */,
+				96DD2C3F1FA9EFFB00FBED42 /* UIViewController+RRNotification.h */,
+				96DD2C401FA9EFFB00FBED42 /* UIViewController+RRNotification.m */,
+			);
+			path = RRNotification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,6 +590,7 @@
 				9629B56A1ED5D89E00F9ABB4 /* ChineseDate.cpp in Sources */,
 				96BB5CE31ECE33FC00B2D788 /* AppDelegate.m in Sources */,
 				96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */,
+				96DD2C431FA9EFFB00FBED42 /* UIViewController+RRNotification.m in Sources */,
 				96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */,
 				9629B5071ED0041600F9ABB4 /* UILabel+Custom.m in Sources */,
 				96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */,
@@ -581,7 +605,9 @@
 				96341BEE1F7BECD0000D8D71 /* TextViewController.m in Sources */,
 				9629B55C1ED2D6AB00F9ABB4 /* XXDatePickerView.m in Sources */,
 				9629B4FA1ECFFD3B00F9ABB4 /* UIViewController+PresentInWindow.m in Sources */,
+				96DD2C411FA9EFFB00FBED42 /* NSObject+RRNotification.m in Sources */,
 				967E25BA1F35C427003096B2 /* ContactViewController.m in Sources */,
+				96DD2C421FA9EFFB00FBED42 /* RRNotificationMaker.m in Sources */,
 				9673041A1F8D0A2A0058AE54 /* KIZBehavior.m in Sources */,
 				9629B50E1ED0A98F00F9ABB4 /* XXTextView.m in Sources */,
 				96341BE01F73CCB9000D8D71 /* RRListViewController.m in Sources */,
