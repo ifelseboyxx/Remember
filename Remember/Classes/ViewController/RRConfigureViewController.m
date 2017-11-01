@@ -32,6 +32,8 @@
 
 #import "MainListCell.h"
 
+#import "UIViewController+RRNotification.h"
+
 typedef NS_ENUM(NSUInteger,AddVCSectionType){
     AddVCSectionTypeInfo = 0,  //信息
     AddVCSectionTypeTime,      //时间
@@ -76,6 +78,27 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     [PPGetAddressBook requestAddressBookAuthorization];
     
     [self.tvConfigure registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
+    
+    
+//    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//
+//    //iOS 10 使用以下方法注册，才能得到授权，注册通知以后，会自动注册 deviceToken，如果获取不到 deviceToken，Xcode8下要注意开启 Capability->Push Notification。
+//    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
+//                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+//                              // Enable or disable features based on authorization.
+//                          }];
+//
+//    //获取当前的通知设置，UNNotificationSettings 是只读对象，不能直接修改，只能通过以下方法获取
+//    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+//
+//    }];
+    
+    
+    [self requestNotificationAuthorizationWithBlock:^(BOOL granted) {
+        
+        NSLog(@"%d",granted);
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -275,5 +298,16 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self rr_makeNotification:^(RRNotificationMaker * _Nonnull make) {
+        make.content.title = @"鑫哥测试";
+        make.content.body = @"武将经典语录：就我接触的d2玩家，越菜的越喜欢嘲讽lol，而分越高则对lol的评价越理性。";
+        make.date = [NSDate dateWithTimeIntervalSinceNow:10];
+        make.identifier = @"ifelseboyxx.Remember";
+    } withCompletionHandler:^(NSError * _Nullable error) {
+        NSLog(@"%@",error);
+    }];
 }
 @end
