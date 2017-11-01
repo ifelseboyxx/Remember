@@ -74,9 +74,7 @@
 		96021CA61F98B3B000BBE31C /* UIViewController+RRPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RRPresentTransition.h"; sourceTree = "<group>"; };
 		96021CA71F98B3B000BBE31C /* UIViewController+RRPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RRPresentTransition.m"; sourceTree = "<group>"; };
 		96021CAC1FA7361000BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		96021CAD1FA7361100BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		96021CAE1FA7361600BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
-		96021CAF1FA7361600BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		96021CB31FA7364000BBE31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96021CB51FA7364200BBE31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		96021CB61FA7364300BBE31C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -161,6 +159,7 @@
 		96BB5E471ECE82B600B2D788 /* MainListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainListCell.h; sourceTree = "<group>"; };
 		96BB5E481ECE82B600B2D788 /* MainListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListCell.m; sourceTree = "<group>"; };
 		96BB5E491ECE82B600B2D788 /* MainListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
+		96DD2C391FA960C900FBED42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		96F3A3053A719C3428E91774 /* libPods-Remember.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remember.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5FC01D1ED6D73C00B4C87B /* XXDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDate.h; sourceTree = "<group>"; };
 		DB5FC01E1ED6D73D00B4C87B /* XXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDate.m; sourceTree = "<group>"; };
@@ -643,6 +642,7 @@
 				96BB5CE81ECE33FC00B2D788 /* Base */,
 				96021CAC1FA7361000BBE31C /* zh-Hans */,
 				96021CAE1FA7361600BBE31C /* zh-Hant */,
+				96DD2C391FA960C900FBED42 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -651,8 +651,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				96BB5CED1ECE33FC00B2D788 /* Base */,
-				96021CAD1FA7361100BBE31C /* zh-Hans */,
-				96021CAF1FA7361600BBE31C /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
