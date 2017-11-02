@@ -10,7 +10,7 @@
 
 @implementation UIViewController (RRNotification)
 
-- (void)rr_makeNotification:(void(NS_NOESCAPE ^)(RRNotificationMaker *))block
+- (void)rr_addNotification:(void(NS_NOESCAPE ^)(RRNotificationMaker *))block
       withCompletionHandler:(nullable void(^)(NSError *__nullable error))completionHandler {
     
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -67,7 +67,18 @@
         
         [center addNotificationRequest:request withCompletionHandler:completionHandler];
     }];
+}
+
+- (void)rr_removePendingNotificationsWithIdentifiers:(NSString *)identifiers {
     
+    if (identifiers.length <= 0) {return;}
+    [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:@[identifiers]];
+
+}
+
+- (void)rr_removeAllPendingNotifications {
+    
+    [[UNUserNotificationCenter currentNotificationCenter] removeAllDeliveredNotifications];
     
 }
 

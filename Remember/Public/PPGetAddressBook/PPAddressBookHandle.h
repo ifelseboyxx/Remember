@@ -30,9 +30,9 @@ PPSingletonH(AddressBookHandle)
 /**
  请求用户通讯录授权
 
- @param success 授权成功的回调
+ @param block 授权回调
  */
-- (void)requestAuthorizationWithSuccessBlock:(void(^)(void))success;
+- (void)requestAddressBookAuthorizationBlock:(void(^)(BOOL granted))block;
 
 /**
  *  返回每个联系人的模型

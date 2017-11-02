@@ -10,11 +10,7 @@
 
 @implementation RRNotificationMaker
 
-//- (UNMutableNotificationContent *)content {
-//    return UNMutableNotificationContent.new;
-//}
-
 - (void)dealloc {
-    NSLog(@"%@释放了",self.class);
+    RRLog(@"%@释放了",self.class);
 }
 @end

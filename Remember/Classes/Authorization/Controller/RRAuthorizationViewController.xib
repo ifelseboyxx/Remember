@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RRAuthorizationViewController">
+            <connections>
+                <outlet property="tvAuthorization" destination="8I9-8D-q0Q" id="oTy-lU-QCg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cg3-q4-Mx7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T6b-eQ-U3D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8I9-8D-q0Q">
+                                <rect key="frame" x="0.0" y="91" width="375" height="606"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="HBL-Cl-9pv"/>
+                                    <outlet property="delegate" destination="-1" id="WL9-Si-FH4"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请打开权限：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWl-eA-Vaf">
+                                <rect key="frame" x="15" y="25" width="182" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8I9-8D-q0Q" firstAttribute="top" secondItem="lWl-eA-Vaf" secondAttribute="bottom" constant="30" id="9RI-V9-mTY"/>
+                            <constraint firstItem="8I9-8D-q0Q" firstAttribute="leading" secondItem="T6b-eQ-U3D" secondAttribute="leading" id="Gbl-CL-kpE"/>
+                            <constraint firstAttribute="trailing" secondItem="8I9-8D-q0Q" secondAttribute="trailing" id="Qrr-np-0d0"/>
+                            <constraint firstAttribute="bottom" secondItem="8I9-8D-q0Q" secondAttribute="bottom" constant="-30" id="hVR-FT-9R4"/>
+                            <constraint firstItem="lWl-eA-Vaf" firstAttribute="leading" secondItem="T6b-eQ-U3D" secondAttribute="leading" constant="15" id="hev-pO-PP5"/>
+                            <constraint firstItem="lWl-eA-Vaf" firstAttribute="top" secondItem="T6b-eQ-U3D" secondAttribute="top" constant="25" id="usj-sT-kwk"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" red="0.36785714289999999" green="0.4643205467" blue="0.1930288758" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="Cg3-q4-Mx7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1e5-a5-mRN"/>
+                <constraint firstAttribute="trailing" secondItem="Cg3-q4-Mx7" secondAttribute="trailing" id="375-hh-sBg"/>
+                <constraint firstItem="Cg3-q4-Mx7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L6E-Ap-4Vw"/>
+                <constraint firstAttribute="bottom" secondItem="Cg3-q4-Mx7" secondAttribute="bottom" id="zbc-A2-mSl"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

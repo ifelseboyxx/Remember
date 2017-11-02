@@ -13,6 +13,8 @@
 #import "RRTransition.h"
 #import "RRConfigureViewController.h"
 #import "BaseNavigationController.h"
+#import "RRAuthorizationViewController.h"
+
 
 @interface RRListViewController ()
 <UITableViewDelegate,UITableViewDataSource>
@@ -36,7 +38,10 @@
     
     [self.tvList registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
     
+    // app启动或者app从后台进入前台都会调用这个方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -62,6 +67,7 @@
 }
 
 #pragma mark - Intial Methods
+
 
 - (void)setUpNavItemUI {
     
@@ -93,10 +99,29 @@
 
 #pragma mark - Private Method
 
+//状态重置
 - (void)stateReset {
     [self.tvList setContentOffset:CGPointZero];
     self.tvList.mj_insetT = 0.f;
     self.tvList.bounces = YES;
+}
+
+//进入前台回调
+- (void)applicationBecomeActive {
+    [self authorizationVC];
+}
+
+//授权页面
+- (void)authorizationVC {
+    
+    [[RRAuthorizationViewController sharedInstance] requestDisplayAuthorizationBlock:^(BOOL display) {
+        if (display) {
+            [[RRAuthorizationViewController sharedInstance] rr_display];
+        }else{
+            [[RRAuthorizationViewController sharedInstance] rr_dismiss];
+        }
+      
+    }];
 }
 
 #pragma mark - Setter Getter Methods
@@ -122,7 +147,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MainListCell *cell = [tableView dequeueReusableCellWithIdentifier:MainListCellIdentifier forIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor flatBlueColor];
+
+    if (indexPath.row%2 == 0) {
+           cell.backgroundColor = [UIColor flatBlueColor];
+    }else{
+           cell.backgroundColor = [UIColor whiteColor];
+    }
     cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
     return cell;
 }

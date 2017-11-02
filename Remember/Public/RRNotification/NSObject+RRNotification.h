@@ -15,7 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) RRNotificationMaker *rr_maker;
 
+
+/**
+ 获取推送权限
+
+ @param block 回调
+ */
 - (void)requestNotificationAuthorizationWithBlock:(void(^)(BOOL granted))block;
+
 @end
 
 NS_ASSUME_NONNULL_END

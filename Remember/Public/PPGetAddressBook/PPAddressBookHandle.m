@@ -22,22 +22,13 @@
 
 PPSingletonM(AddressBookHandle)
 
-- (void)requestAuthorizationWithSuccessBlock:(void (^)(void))success
+- (void)requestAddressBookAuthorizationBlock:(void(^)(BOOL granted))block
 {
     if(IOS9_LATER)
     {
 #ifdef __IPHONE_9_0
-        // 1.判断是否授权成功,若授权成功直接return
-        if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized) return;
-        // 2.创建通讯录
-        //CNContactStore *store = [[CNContactStore alloc] init];
-        // 3.授权
         [self.contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            if (granted) {
-                NSLog(@"授权成功"); success();
-            }else{
-                NSLog(@"授权失败");
-            }
+            !block ?: block(granted);
         }];
 #endif
     }

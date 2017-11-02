@@ -15,11 +15,8 @@
 
 @implementation PPGetAddressBook
 
-+ (void)requestAddressBookAuthorization
-{
-    [kPPAddressBookHandle requestAuthorizationWithSuccessBlock:^{
-        [self getOrderAddressBook:nil authorizationFailure:nil];
-    }];
++ (void)requestAddressBookAuthorizationBlock:(void(^)(BOOL granted))block {
+    [kPPAddressBookHandle requestAddressBookAuthorizationBlock:block];
 }
 
 + (void)initialize
