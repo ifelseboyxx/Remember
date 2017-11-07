@@ -38,8 +38,22 @@
     
     [self.tvList registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
     
-    // app启动或者app从后台进入前台都会调用这个方法
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        if([RRAuthorizationViewController sharedInstance].showed) {
+//            [[RRAuthorizationViewController sharedInstance] requestDisplayAuthorizationBlock:^(BOOL display) {
+//                if (display) {
+//                    [[RRAuthorizationViewController sharedInstance] rr_displayWithAnimted:NO];
+//                }else{
+//                    [[RRAuthorizationViewController sharedInstance] rr_dismiss];
+//                }
+//            }];
+//        }
+//    }];
+//    
+//    
+//    [[RRAuthorizationManager sharedInstance] fetchAuthorizationResult:^(BOOL grantedAll, NSArray<RRAuthorization *> * _Nonnull authorizations) {
+//        
+//    }];
 }
 
 
@@ -78,12 +92,16 @@
     @weakify(self);
     header.RRHeaderRefreshingBlock = ^{
         @strongify(self);
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        BaseNavigationController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(BaseNavigationController.class)];
-        [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
-    };
+        
+        [[RRAuthorizationViewController sharedInstance] rr_displayWithAnimted:YES];
+        
+//                //进入下个页面
+//                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                BaseNavigationController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(BaseNavigationController.class)];
+//                [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
+        
+        };
     
-
     self.tvList.mj_header = (id)header;
     
     _multipleDelegate = [KIZMultipleProxyBehavior new];
@@ -101,27 +119,11 @@
 
 //状态重置
 - (void)stateReset {
-    [self.tvList setContentOffset:CGPointZero];
-    self.tvList.mj_insetT = 0.f;
-    self.tvList.bounces = YES;
-}
-
-//进入前台回调
-- (void)applicationBecomeActive {
-    [self authorizationVC];
-}
-
-//授权页面
-- (void)authorizationVC {
-    
-    [[RRAuthorizationViewController sharedInstance] requestDisplayAuthorizationBlock:^(BOOL display) {
-        if (display) {
-            [[RRAuthorizationViewController sharedInstance] rr_display];
-        }else{
-            [[RRAuthorizationViewController sharedInstance] rr_dismiss];
-        }
-      
+    [UIView animateWithDuration:0.5f animations:^{
+        self.tvList.mj_insetT = .0f;
     }];
+    [self.tvList setContentOffset:CGPointZero];
+    self.tvList.bounces = YES;
 }
 
 #pragma mark - Setter Getter Methods
@@ -163,8 +165,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-   
-
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"测试" message:@"测试数据" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"other", nil];
+//    [[self rac_signalForSelector:@selector(alertView:clickedButtonAtIndex:) fromProtocol:@protocol(UIAlertViewDelegate)] subscribeNext:^(RACTuple * _Nullable x) {
+////        NSLog(@"测试数据");
+//    }];
+    
+    [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber * _Nullable x) {
+        
+    }];
+    [alertView show];
 }
 
 @end

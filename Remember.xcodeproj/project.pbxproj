@@ -62,6 +62,9 @@
 		96DD2C541FAB61E500FBED42 /* RRAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C4B1FAB61E500FBED42 /* RRAuthorization.m */; };
 		96DD2C561FAB61E500FBED42 /* RRAuthorizationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C501FAB61E500FBED42 /* RRAuthorizationCell.m */; };
 		96DD2C571FAB61E500FBED42 /* RRAuthorizationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96DD2C511FAB61E500FBED42 /* RRAuthorizationCell.xib */; };
+		96DD2C601FAE01B300FBED42 /* RRAuthorizationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C5F1FAE01B300FBED42 /* RRAuthorizationViewModel.m */; };
+		96DD2C691FB1396400FBED42 /* UIResponder+RRRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C651FB1396200FBED42 /* UIResponder+RRRouter.m */; };
+		96DD2C6A1FB1396400FBED42 /* UIScrollView+AdjustmentBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DD2C671FB1396300FBED42 /* UIScrollView+AdjustmentBehavior.m */; };
 		D267EEA362A30793676B3F74 /* libPods-Remember.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F3A3053A719C3428E91774 /* libPods-Remember.a */; };
 		DB5FC01F1ED6D73D00B4C87B /* XXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5FC01E1ED6D73D00B4C87B /* XXDate.m */; };
 /* End PBXBuildFile section */
@@ -178,6 +181,12 @@
 		96DD2C4F1FAB61E500FBED42 /* RRAuthorizationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAuthorizationCell.h; sourceTree = "<group>"; };
 		96DD2C501FAB61E500FBED42 /* RRAuthorizationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAuthorizationCell.m; sourceTree = "<group>"; };
 		96DD2C511FAB61E500FBED42 /* RRAuthorizationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RRAuthorizationCell.xib; sourceTree = "<group>"; };
+		96DD2C5E1FAE01B300FBED42 /* RRAuthorizationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAuthorizationViewModel.h; sourceTree = "<group>"; };
+		96DD2C5F1FAE01B300FBED42 /* RRAuthorizationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAuthorizationViewModel.m; sourceTree = "<group>"; };
+		96DD2C651FB1396200FBED42 /* UIResponder+RRRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+RRRouter.m"; sourceTree = "<group>"; };
+		96DD2C661FB1396300FBED42 /* UIResponder+RRRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+RRRouter.h"; sourceTree = "<group>"; };
+		96DD2C671FB1396300FBED42 /* UIScrollView+AdjustmentBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+AdjustmentBehavior.m"; sourceTree = "<group>"; };
+		96DD2C681FB1396400FBED42 /* UIScrollView+AdjustmentBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+AdjustmentBehavior.h"; sourceTree = "<group>"; };
 		96F3A3053A719C3428E91774 /* libPods-Remember.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remember.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5FC01D1ED6D73C00B4C87B /* XXDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDate.h; sourceTree = "<group>"; };
 		DB5FC01E1ED6D73D00B4C87B /* XXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDate.m; sourceTree = "<group>"; };
@@ -225,6 +234,10 @@
 		9629B4F71ECFFD3B00F9ABB4 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				96DD2C661FB1396300FBED42 /* UIResponder+RRRouter.h */,
+				96DD2C651FB1396200FBED42 /* UIResponder+RRRouter.m */,
+				96DD2C681FB1396400FBED42 /* UIScrollView+AdjustmentBehavior.h */,
+				96DD2C671FB1396300FBED42 /* UIScrollView+AdjustmentBehavior.m */,
 				9629B5051ED0041600F9ABB4 /* UILabel+Custom.h */,
 				9629B5061ED0041600F9ABB4 /* UILabel+Custom.m */,
 				96462FB21F1F729A00A18425 /* NSDate+Helper.h */,
@@ -466,6 +479,7 @@
 		96DD2C441FAB61E500FBED42 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				96DD2C5D1FAE01B300FBED42 /* ViewModel */,
 				96DD2C451FAB61E500FBED42 /* Controller */,
 				96DD2C491FAB61E500FBED42 /* Model */,
 				96DD2C4E1FAB61E500FBED42 /* View */,
@@ -500,6 +514,15 @@
 				96DD2C511FAB61E500FBED42 /* RRAuthorizationCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		96DD2C5D1FAE01B300FBED42 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				96DD2C5E1FAE01B300FBED42 /* RRAuthorizationViewModel.h */,
+				96DD2C5F1FAE01B300FBED42 /* RRAuthorizationViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -638,6 +661,7 @@
 				9673041B1F8D0A2A0058AE54 /* KIZMultipleProxyBehavior.m in Sources */,
 				9629B56B1ED5D89E00F9ABB4 /* SolarDate.cpp in Sources */,
 				96DD2C561FAB61E500FBED42 /* RRAuthorizationCell.m in Sources */,
+				96DD2C601FAE01B300FBED42 /* RRAuthorizationViewModel.m in Sources */,
 				9629B5611ED4174C00F9ABB4 /* NSArray+Helper.m in Sources */,
 				9629B50A1ED087A800F9ABB4 /* BaseNavigationController.m in Sources */,
 				96341BEA1F73CCD7000D8D71 /* RRDragHeader.m in Sources */,
@@ -648,6 +672,7 @@
 				96DD2C521FAB61E500FBED42 /* RRAuthorizationViewController.m in Sources */,
 				96462FB41F1F729A00A18425 /* NSDate+Helper.m in Sources */,
 				96DD2C431FA9EFFB00FBED42 /* UIViewController+RRNotification.m in Sources */,
+				96DD2C691FB1396400FBED42 /* UIResponder+RRRouter.m in Sources */,
 				96BB5E4A1ECE82B600B2D788 /* MainListCell.m in Sources */,
 				9629B5071ED0041600F9ABB4 /* UILabel+Custom.m in Sources */,
 				96341BE91F73CCD7000D8D71 /* RRDragFooter.m in Sources */,
@@ -670,6 +695,7 @@
 				9629B50E1ED0A98F00F9ABB4 /* XXTextView.m in Sources */,
 				96341BE01F73CCB9000D8D71 /* RRListViewController.m in Sources */,
 				96BB5CE01ECE33FC00B2D788 /* main.m in Sources */,
+				96DD2C6A1FB1396400FBED42 /* UIScrollView+AdjustmentBehavior.m in Sources */,
 				9629B5561ED2BF6600F9ABB4 /* XXGregorianDateModel.m in Sources */,
 				967E25B51F35C211003096B2 /* PPAddressBookHandle.m in Sources */,
 				9629B5591ED2BF8300F9ABB4 /* XXChineseDateModel.m in Sources */,

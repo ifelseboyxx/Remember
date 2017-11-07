@@ -11,9 +11,11 @@
 @implementation RRAuthorization
 
 + (RRAuthorization *)authorizationWithTitle:(NSString *)title
-                                     granted:(BOOL)granted {
+                                       type:(RRAuthorizationType)type
+                                    granted:(BOOL)granted {
     RRAuthorization *rr = [RRAuthorization new];
     rr.title = title;
+    rr.type = type;
     rr.granted = granted;
     return rr;
 }

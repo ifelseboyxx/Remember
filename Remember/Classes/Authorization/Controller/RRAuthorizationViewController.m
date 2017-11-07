@@ -7,34 +7,26 @@
 //
 
 #import "RRAuthorizationViewController.h"
-#import "UIViewController+RRNotification.h"
-#import "PPGetAddressBook.h"
 #import "RRAuthorizationCell.h"
+#import "RRAuthorizationViewModel.h"
 #import "RRAuthorization.h"
-#import "RRAuthorizationManger.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-static NSString *const kNotificationTitle = @"允许推送通知";
-static NSString *const kAddressBookTitle = @"允许读取手机里的通讯录";
-
-
-static NSMutableArray <RRAuthorization *> *_data;
-static NSMutableArray <NSNumber *> *_state;
 
 @interface RRAuthorizationViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tvAuthorization;
 
-@property (strong, nonatomic) RACSignal *signalA;
-@property (strong, nonatomic) RACSignal *signalB;
-@property (strong, nonatomic) RACSignal *signalC;
+@property (weak, nonatomic) IBOutlet UIButton *btnDismiss;
+
+@property (strong, nonatomic) RRAuthorizationViewModel *viewModel;
+
 @end
 
-@implementation RRAuthorizationViewController {
-    BOOL _show; //避免重复显示
-}
+@implementation RRAuthorizationViewController
+
+#pragma mark - Init
 
 + (instancetype)sharedInstance {
     static id instance;
@@ -45,82 +37,79 @@ static NSMutableArray <NSNumber *> *_state;
     return instance;
 }
 
-- (void)requestDisplayAuthorizationBlock:(void(^)(BOOL display))block {
-    
-    _data = [NSMutableArray array];
-    _state = [NSMutableArray array];
-    
-    dispatch_queue_t queue = dispatch_get_main_queue();
-    dispatch_group_t group = dispatch_group_create();
-    
-    dispatch_group_enter(group);
-    dispatch_async(queue, ^{
+- (RRAuthorizationViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [RRAuthorizationViewModel new];
         
-        [self requestNotificationAuthorizationWithBlock:^(BOOL granted) {
-            
-            NSLog(@"111");
-            RRAuthorization *rr = [RRAuthorization authorizationWithTitle:kNotificationTitle granted:granted];
-            [_data addObject:rr];
-            [_state addObject:@(granted)];
-            dispatch_group_leave(group);
-            
-        }];
-        
-    });
-    
-    dispatch_group_enter(group);
-    dispatch_async(queue, ^{
-        
-        [PPGetAddressBook requestAddressBookAuthorizationBlock:^(BOOL granted) {
-            NSLog(@"222");
-            RRAuthorization *rr = [RRAuthorization authorizationWithTitle:kAddressBookTitle granted:granted];
-            [_data addObject:rr];
-            [_state addObject:@(granted)];
-            dispatch_group_leave(group);
-        }];
-        
-    });
-    
-    dispatch_group_notify(group, queue, ^{
-        [_state enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            BOOL state = [obj boolValue];
-            if (!state) {
-                !block ?: block(YES);
-                [self.tvAuthorization reloadData];
-                *stop = YES;
-            }else if(state && idx == (_state.count - 1)){
-                !block ?: block(NO);
-            }
-        }];
-    });
+        //授权情况回调
+        @weakify(self);
+        _viewModel.authorizationedCallBack = ^(BOOL granted, RRAuthorizationType type) {
+            @strongify(self);
+            //弹框提示
+            [self alertViewControllerWithType:type granted:granted];
+        };
+    }
+    return _viewModel;
 }
 
-- (void)rr_display {
+#pragma mark - Event
+
+- (void)alertViewControllerWithType:(RRAuthorizationType)type granted:(BOOL)granted {
     
-    if (_show) {
-        return;
+    NSString *title = nil;
+    NSString *message = nil;
+    NSString *actionR = NSLocalizedString(@"authoritionYES", nil);
+    NSString *actionL = NSLocalizedString(@"authoritionNo", nil);
+    if (type == RRAuthorizationTypeNotification) { //推送
+        title = granted ? NSLocalizedString(@"n_authoritionTitle_1", nil) : NSLocalizedString(@"n_authoritionTitle_0", nil);
+        message = granted ? NSLocalizedString(@"n_authoritionMessage_1", nil) : NSLocalizedString(@"n_authoritionMessage_0", nil);
+    }else if(type == RRAuthorizationTypeAddressBook){//通讯录
+        title = granted ? NSLocalizedString(@"a_authoritionTitle_1", nil) : NSLocalizedString(@"a_authoritionTitle_0", nil);
+        message = granted ? NSLocalizedString(@"a_authoritionMessage_1", nil) : NSLocalizedString(@"a_authoritionMessage_0", nil);
     }
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:actionL style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *actionSure = [UIAlertAction actionWithTitle:actionR style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url options:@{UIApplicationOpenURLOptionUniversalLinksOnly : @NO} completionHandler:^(BOOL success) {
+            }];
+        }
+    }];
+    [alertVC addAction:actionCancel];
+    [alertVC addAction:actionSure];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)rr_displayWithAnimted:(BOOL)animted {
     [self xx_presentInWindow];
-    _show = YES;
 }
 
 - (void)rr_dismiss {
+    [self xx_dismissWithAnimation:YES];
+}
+
+- (IBAction)dismissBtnClick:(UIButton *)sender {
     
-    if (_show) {
-        [self xx_dismissWithAnimation:YES];
-    }
-    _show = NO;
+    [self rr_dismiss];
 }
 
 #pragma mark - Life
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //按钮 enabled 属性绑定
+    RAC(self.btnDismiss,enabled) = self.viewModel.validDismissSignal;
+    
+    @weakify(self);
+    [[[RACObserve(self.viewModel, authorizations) distinctUntilChanged] skip:1] subscribeNext:^(NSArray <RRAuthorization *> *authorizations) {
+        @strongify(self);
+        [self.tvAuthorization reloadData];
+        NSLog(@"监听到了数据源有改变 %@",authorizations);
+    }];
     
     [self.tvAuthorization registerNib:[UINib nibWithNibName:RRAuthorizationCellIdentifier bundle:nil] forCellReuseIdentifier:RRAuthorizationCellIdentifier];
     
@@ -129,17 +118,18 @@ static NSMutableArray <NSNumber *> *_state;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _data.count;
+    return self.viewModel.authorizations.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     RRAuthorizationCell *cell = [tableView dequeueReusableCellWithIdentifier:RRAuthorizationCellIdentifier forIndexPath:indexPath];
-    cell.model = _data[indexPath.row];
+    cell.model = self.viewModel.authorizations[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+
     cell.transform = CGAffineTransformMakeTranslation(0, 60.f);
     [UIView animateWithDuration:1.f animations:^{
         cell.transform = CGAffineTransformIdentity;
@@ -152,6 +142,11 @@ static NSMutableArray <NSNumber *> *_state;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //cell 点击事件绑定
+     [self.viewModel.didSelectCommand execute:indexPath];
 }
 @end
 

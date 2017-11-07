@@ -8,6 +8,7 @@
 
 #import "UIViewController+RRNotification.h"
 
+
 @implementation UIViewController (RRNotification)
 
 - (void)rr_addNotification:(void(NS_NOESCAPE ^)(RRNotificationMaker *))block

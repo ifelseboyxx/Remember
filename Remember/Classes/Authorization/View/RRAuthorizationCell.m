@@ -12,6 +12,7 @@
 @interface RRAuthorizationCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *check;
 
 @end
 
@@ -21,8 +22,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
-    
+  
 }
 
 - (void)setModel:(RRAuthorization *)model {
@@ -32,8 +32,9 @@
     _model = model;
     
     self.lblTitle.text = model.title;
+    self.check.image = model.granted ? [UIImage imageNamed:@"choose"] : [UIImage imageNamed:@"unchoose"];
+    self.check.backgroundColor = model.granted ? [UIColor whiteColor] : [UIColor blackColor];
     
-
 }
 
 @end

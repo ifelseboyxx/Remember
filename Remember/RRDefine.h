@@ -21,5 +21,6 @@
 //下拉字体颜色
 #define RRHeaderTextColor (@"#383639")
 
+
 //是否授权标示 (有值表示相关权限授权完毕)
 UIKIT_EXTERN NSString *const RRAuthorizationed;

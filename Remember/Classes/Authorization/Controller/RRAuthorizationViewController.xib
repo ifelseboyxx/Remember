@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RRAuthorizationViewController">
             <connections>
+                <outlet property="btnDismiss" destination="WDM-Sn-m9v" id="FGl-q3-6NP"/>
                 <outlet property="tvAuthorization" destination="8I9-8D-q0Q" id="oTy-lU-QCg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,11 +28,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8I9-8D-q0Q">
-                                <rect key="frame" x="0.0" y="91" width="375" height="606"/>
+                                <rect key="frame" x="0.0" y="91" width="375" height="486"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="-1" id="HBL-Cl-9pv"/>
-                                    <outlet property="delegate" destination="-1" id="WL9-Si-FH4"/>
+                                    <outlet property="dataSource" destination="-1" id="328-iu-LGu"/>
+                                    <outlet property="delegate" destination="-1" id="d0Q-Xo-75e"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请打开权限：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWl-eA-Vaf">
@@ -40,20 +41,33 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDM-Sn-m9v">
+                                <rect key="frame" x="157.5" y="592" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.83431919639999996" green="0.1022321429" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Y5a-YC-gRr"/>
+                                    <constraint firstAttribute="width" constant="60" id="gJB-Zb-ybY"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="dismissBtnClick:" destination="-1" eventType="touchUpInside" id="Un5-Vc-Kzg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="8I9-8D-q0Q" firstAttribute="top" secondItem="lWl-eA-Vaf" secondAttribute="bottom" constant="30" id="9RI-V9-mTY"/>
                             <constraint firstItem="8I9-8D-q0Q" firstAttribute="leading" secondItem="T6b-eQ-U3D" secondAttribute="leading" id="Gbl-CL-kpE"/>
                             <constraint firstAttribute="trailing" secondItem="8I9-8D-q0Q" secondAttribute="trailing" id="Qrr-np-0d0"/>
-                            <constraint firstAttribute="bottom" secondItem="8I9-8D-q0Q" secondAttribute="bottom" constant="-30" id="hVR-FT-9R4"/>
+                            <constraint firstAttribute="bottom" secondItem="WDM-Sn-m9v" secondAttribute="bottom" constant="15" id="RuJ-oJ-muk"/>
                             <constraint firstItem="lWl-eA-Vaf" firstAttribute="leading" secondItem="T6b-eQ-U3D" secondAttribute="leading" constant="15" id="hev-pO-PP5"/>
                             <constraint firstItem="lWl-eA-Vaf" firstAttribute="top" secondItem="T6b-eQ-U3D" secondAttribute="top" constant="25" id="usj-sT-kwk"/>
+                            <constraint firstItem="WDM-Sn-m9v" firstAttribute="top" secondItem="8I9-8D-q0Q" secondAttribute="bottom" constant="15" id="xjx-PA-IHg"/>
+                            <constraint firstItem="WDM-Sn-m9v" firstAttribute="centerX" secondItem="T6b-eQ-U3D" secondAttribute="centerX" id="yiH-87-srU"/>
                         </constraints>
                     </view>
                     <blurEffect style="dark"/>
                 </visualEffectView>
             </subviews>
-            <color key="backgroundColor" red="0.36785714289999999" green="0.4643205467" blue="0.1930288758" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Cg3-q4-Mx7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1e5-a5-mRN"/>
                 <constraint firstAttribute="trailing" secondItem="Cg3-q4-Mx7" secondAttribute="trailing" id="375-hh-sBg"/>

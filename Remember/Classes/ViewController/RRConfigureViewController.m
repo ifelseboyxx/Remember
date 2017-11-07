@@ -75,18 +75,7 @@ typedef NS_ENUM(NSUInteger,AddVCSectionType){
     [self pullUp];
     
     [self.tvConfigure registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
-    
-
-    [self requestNotificationAuthorizationWithBlock:^(BOOL granted) {
-        
-        NSLog(@"%d",granted);
-        
-    }];
-    
-    [PPGetAddressBook requestAddressBookAuthorizationBlock:^(BOOL granted) {
-       
-        NSLog(@"%d",granted);
-    }];
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated {

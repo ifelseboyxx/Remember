@@ -13,15 +13,7 @@
 
 + (instancetype)sharedInstance;
 
-/**
- 权限获取
-
- @param block 权限获取情况
- */
-- (void)requestDisplayAuthorizationBlock:(void(^)(BOOL display))block;
-
-
-- (void)rr_display;
+- (void)rr_displayWithAnimted:(BOOL)animted;
 - (void)rr_dismiss;
 
 @end

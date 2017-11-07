@@ -14,3 +14,28 @@
 //上拉提示文案
 "footer_1" = "上拉返回";
 "footer_2" = "松开返回";
+
+//权限提示文案
+"authoritionYES" = "去设置";
+"authoritionNo" = "知道了";
+
+//****通知****
+//无权限
+"n_authoritionTitle_0" = "无访问权限";
+"n_authoritionMessage_0" = "通知权限被关闭，可能会影响功能的正常使用，建议您在“系统设置”中开启";
+
+//有权限
+"n_authoritionTitle_1" = "已允许推送通知";
+"n_authoritionMessage_1" = "通知权限已打开，若想关闭，您可以去“系统设置”中关闭";
+
+
+//****通讯录****
+//无权限
+"a_authoritionTitle_0" = "无访问权限";
+"a_authoritionMessage_0" = "通讯录权限被关闭，可能会影响功能的正常使用，建议您在“系统设置”中开启";
+
+
+//有权限
+"a_authoritionTitle_1" = "已允许访问通讯录";
+"a_authoritionMessage_1" = "通讯录权限已打开，若想关闭，您可以去“系统设置”中关闭";
+

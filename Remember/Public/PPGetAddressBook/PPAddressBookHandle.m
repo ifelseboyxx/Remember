@@ -28,7 +28,9 @@ PPSingletonM(AddressBookHandle)
     {
 #ifdef __IPHONE_9_0
         [self.contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            !block ?: block(granted);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !block ?: block(granted);
+            });
         }];
 #endif
     }
