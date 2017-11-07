@@ -22,7 +22,7 @@ static NSString *const kAddressBookTitle = @"允许读取手机里的通讯录";
 
 @interface RRAuthorizationViewModel ()
 
-@property (assign, readwrite) BOOL display;
+@property (readwrite) BOOL display;
 
 @property (strong, nonatomic, readwrite) RACCommand *didSelectCommand;
 
@@ -64,12 +64,6 @@ static NSString *const kAddressBookTitle = @"允许读取手机里的通讯录";
     if (self) {
         @weakify(self);
         
-        //按钮 enabled
-        //        self.validDismissSignal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-        //            return display;
-        //        }];
-        
-        
         self.didSelectCommand = [[RACCommand alloc] initWithSignalBlock:^(NSIndexPath *indexPath) {
             @strongify(self);
             
@@ -88,6 +82,7 @@ static NSString *const kAddressBookTitle = @"允许读取手机里的通讯录";
                         
                         //更新数据源
                         self.authorizations = [self replaceObjectAtIndex:indexPath.row granted:granted title:kNotificationTitle type:(RRAuthorizationTypeNotification | RRAuthorizationTypeOperation)];
+                        
                         
                     }];
                 }

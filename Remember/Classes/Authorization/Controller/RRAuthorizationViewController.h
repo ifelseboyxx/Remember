@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN NSString *const RRAuthorizationGranted;
 
 @interface RRAuthorizationViewController : UIViewController
 

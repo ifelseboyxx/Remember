@@ -38,22 +38,22 @@
     
     [self.tvList registerNib:[UINib nibWithNibName:MainListCellIdentifier bundle:nil] forCellReuseIdentifier:MainListCellIdentifier];
     
-//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-//        if([RRAuthorizationViewController sharedInstance].showed) {
-//            [[RRAuthorizationViewController sharedInstance] requestDisplayAuthorizationBlock:^(BOOL display) {
-//                if (display) {
-//                    [[RRAuthorizationViewController sharedInstance] rr_displayWithAnimted:NO];
-//                }else{
-//                    [[RRAuthorizationViewController sharedInstance] rr_dismiss];
-//                }
-//            }];
-//        }
-//    }];
-//    
-//    
-//    [[RRAuthorizationManager sharedInstance] fetchAuthorizationResult:^(BOOL grantedAll, NSArray<RRAuthorization *> * _Nonnull authorizations) {
-//        
-//    }];
+    //    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+    //        if([RRAuthorizationViewController sharedInstance].showed) {
+    //            [[RRAuthorizationViewController sharedInstance] requestDisplayAuthorizationBlock:^(BOOL display) {
+    //                if (display) {
+    //                    [[RRAuthorizationViewController sharedInstance] rr_displayWithAnimted:NO];
+    //                }else{
+    //                    [[RRAuthorizationViewController sharedInstance] rr_dismiss];
+    //                }
+    //            }];
+    //        }
+    //    }];
+    //
+    //
+    //    [[RRAuthorizationManager sharedInstance] fetchAuthorizationResult:^(BOOL grantedAll, NSArray<RRAuthorization *> * _Nonnull authorizations) {
+    //
+    //    }];
 }
 
 
@@ -93,14 +93,19 @@
     header.RRHeaderRefreshingBlock = ^{
         @strongify(self);
         
-        [[RRAuthorizationViewController sharedInstance] rr_displayWithAnimted:YES];
+        BOOL granted = [[NSUserDefaults standardUserDefaults] boolForKey:RRAuthorizationGranted];
         
-//                //进入下个页面
-//                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//                BaseNavigationController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(BaseNavigationController.class)];
-//                [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
+        RRLog(@"%d",granted);
         
-        };
+        if(!granted) {
+            [[RRAuthorizationViewController sharedInstance] rr_displayWithAnimted:YES];
+        }else{
+            //进入下个页面
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            BaseNavigationController *vc = [storyboard instantiateViewControllerWithIdentifier: NSStringFromClass(BaseNavigationController.class)];
+            [self rr_presentViewController:vc animationType:RRPresentTransitionAnimationTypeTopBottom completion:nil];
+        }
+    };
     
     self.tvList.mj_header = (id)header;
     
@@ -149,11 +154,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MainListCell *cell = [tableView dequeueReusableCellWithIdentifier:MainListCellIdentifier forIndexPath:indexPath];
-
+    
     if (indexPath.row%2 == 0) {
-           cell.backgroundColor = [UIColor flatBlueColor];
+        cell.backgroundColor = [UIColor flatBlueColor];
     }else{
-           cell.backgroundColor = [UIColor whiteColor];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
     return cell;
@@ -164,16 +169,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"测试" message:@"测试数据" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"other", nil];
-//    [[self rac_signalForSelector:@selector(alertView:clickedButtonAtIndex:) fromProtocol:@protocol(UIAlertViewDelegate)] subscribeNext:^(RACTuple * _Nullable x) {
-////        NSLog(@"测试数据");
-//    }];
-    
-    [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber * _Nullable x) {
-        
-    }];
-    [alertView show];
 }
 
 @end

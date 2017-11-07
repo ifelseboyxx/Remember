@@ -15,8 +15,6 @@ typedef void(^RRAuthorizationedCallBack)(BOOL granted,RRAuthorizationType type);
 
 @interface RRAuthorizationViewModel : NSObject
 
-@property (assign, readonly) BOOL display;
-
 @property (copy, nonatomic, readonly) NSArray <RRAuthorization *> *authorizations;
 
 //授权结果回调（granted 1 已授权（想解除授权）  0 未授权 （想去设置里授权））

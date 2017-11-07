@@ -13,6 +13,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+NSString *const RRAuthorizationGranted = @"RRAuthorizationGranted";
+
 @interface RRAuthorizationViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 
@@ -105,11 +107,28 @@ NS_ASSUME_NONNULL_BEGIN
     RAC(self.btnDismiss,enabled) = self.viewModel.validDismissSignal;
     
     @weakify(self);
+    __block BOOL granted = NO;
     [[[RACObserve(self.viewModel, authorizations) distinctUntilChanged] skip:1] subscribeNext:^(NSArray <RRAuthorization *> *authorizations) {
         @strongify(self);
+        
+        //遍历看看是否存在未授权的
+        [authorizations enumerateObjectsUsingBlock:^(RRAuthorization * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (!obj.granted) {
+                granted = NO;
+                *stop = YES;
+            }else{
+                granted = YES;
+            }
+        }];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:granted forKey:RRAuthorizationGranted];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         [self.tvAuthorization reloadData];
         NSLog(@"监听到了数据源有改变 %@",authorizations);
     }];
+    
+    
     
     [self.tvAuthorization registerNib:[UINib nibWithNibName:RRAuthorizationCellIdentifier bundle:nil] forCellReuseIdentifier:RRAuthorizationCellIdentifier];
     
